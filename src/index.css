@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #eae5df;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('assets/bricolage-grotesque_5.2.6_latin-500-normal.woff2') format('woff2');
+  font-weight: 600; /* optional: declare weight here */
+  font-style: normal;
+}
+
+.brico {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Monigue Demo';
+  src: url('/assets/MoniguedemoRegular-gwlL1.otf') format('opentype'); /* space before format */
+  font-style: normal;
+  font-weight: 400; /* use 400 instead of 'normal' for clarity */
+}
+
+.monigue-font {
+  font-family: 'Monigue Demo', sans-serif;
+  font-weight: 400; /* force regular */
+}
+
+.dm-sans {
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
