@@ -38,7 +38,7 @@ const Services = () => {
 
   return (
     <section className="py-16 px-4 md:px-12 lg:px-24 text-black mt-10 relative">
-      <div className="max-w-7xl mx-auto pb-24 sm:pb-0">
+      <div className="max-w-7xl mx-auto sm:pb-0">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start mb-16">
           <h2 className="text-4xl md:text-6xl brico -tracking-wider leading-tight mb-6 lg:mb-0">
@@ -96,16 +96,17 @@ const Services = () => {
       </div>
 
       {/* Floating Toggle Button (Mobile Only) */}
-      {isMobile && (
-        <div className="fixed bottom-5 left-0 right-0 flex justify-center z-50">
-          <button
-            onClick={handleToggle}
-            className="bg-white border border-[#a85f31] text-[#a85f31] font-semibold px-6 py-2 rounded-full shadow-lg transition-all hover:bg-[#a85f31] hover:text-white"
-          >
-            {visibleCount >= services.length ? 'View Less' : 'View More'}
-          </button>
-        </div>
-      )}
+{isMobile && (
+  <div className="mt-6 flex justify-center">
+    <button
+      onClick={handleToggle}
+      className="bg-white border border-[#a85f31] text-[#a85f31] font-semibold px-6 py-2 rounded-full shadow-md transition-all hover:bg-[#a85f31] hover:text-white"
+    >
+      {visibleCount >= services.length ? 'View Less' : 'View More'}
+    </button>
+  </div>
+)}
+
     </section>
   );
 };
