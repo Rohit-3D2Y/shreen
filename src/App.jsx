@@ -5,6 +5,7 @@ import DesignProcess from './components/DesignProcess'
 import HeroStats from './components/HeroStats'
 import Services from './components/Services'
 import ProductShowcase from './components/ProductShowcase'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <ProductShowcase />
         <DesignProcess />
         <HeroStats />
+        <Footer />
       </div>
       </>
   )
