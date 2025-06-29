@@ -3,13 +3,13 @@ import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="bg-[#eae5df] text-[#7f5539] font-primary px-4 md:px-8 lg:px-16 pt-16 pb-8 brico -tracking-wider mt-12">
+    <div className="bg-[#eae5df] text-[#7f5539] px-4 md:px-8 lg:px-16 pt-16 pb-8 brico -tracking-wider mt-12">
       <footer className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
         
         {/* About Section */}
         <div>
           <h3 className="text-2xl font-bold text-[#9c6644] mb-4">About Shreen Interior</h3>
-          <p className="text-sm leading-relaxed mb-6">
+          <p className="text-md leading-relaxed mb-6">
             At Shreen Interior, we craft timeless spaces with elegance and functionality. Our team of design experts transforms your vision into stunning reality.
           </p>
           <form className="flex items-center border border-[#b08968] rounded-lg overflow-hidden w-full max-w-sm bg-white">
@@ -30,7 +30,7 @@ const Footer = () => {
         {/* Explore Section */}
         <div>
           <h3 className="text-2xl font-bold text-[#9c6644] mb-4">Explore</h3>
-          <ul className="space-y-3 text-sm">
+          <ul className="space-y-3 text-md">
             <li>
               <a href="/" className="hover:text-[#ca6702] transition">
                 Home
@@ -60,12 +60,12 @@ const Footer = () => {
         </div>
 
         {/* Contact Section */}
-        <div>
+        <div className="flex flex-col">
           <h3 className="text-2xl font-bold text-[#9c6644] mb-4">Contact</h3>
-          <p className="text-sm">Arc Interior Studio</p>
-          <p className="text-sm">123 Design Lane, Elegant City, India</p>
-          <p className="text-sm mt-2">Email: <span className="text-[#7f5539] font-semibold">info@arcinterior.com</span></p>
-          <p className="text-sm">Phone: +91 98765 43210</p>
+          <p className="text-md">Arc Interior Studio</p>
+          <p className="text-md">123 Design Lane, Elegant City, India</p>
+          <p className="text-md mt-2">Email: <span className="text-[#7f5539] font-semibold">info@arcinterior.com</span></p>
+          <p className="text-md">Phone: +91 98765 43210</p>
 
           <div className="flex space-x-4 mt-6">
             <a href="#" className="text-[#9c6644] hover:text-[#ca6702] transition">
