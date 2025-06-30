@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,7 @@ const Navbar = () => {
   return (
     <nav className="w-full bg-[#eae5df] shadow-md z-50 brico -tracking-wider">
       <div className="max-w-9xl mx-auto px-6 py-4 flex justify-between items-center text-black font-medium">
-        <h1 className="text-3xl font-bold cursor-pointer">Shreen Interiors</h1>
+        <a href="/" className="text-3xl font-bold">Shreen Interiors</a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-10 items-center">
@@ -31,9 +32,9 @@ const Navbar = () => {
           <a href="#services" className="hover:text-yellow-500">
             Services
           </a>
-          <a href="/product" className="hover:text-yellow-500">
+          <Link to="/product" className="hover:text-yellow-500">
             Products
-          </a>
+          </Link>
           <button className="border border-black px-4 py-1 rounded-full hover:bg-black hover:text-white transition">
             Connect
           </button>
@@ -62,7 +63,7 @@ const Navbar = () => {
           <a href="#services" className="hover:text-yellow-500">
             Services
           </a>
-          <Link to="/products" className="hover:text-yellow-500">
+          <Link to="/product" className="hover:text-yellow-500">
             Products
           </Link>
           <button className="border border-black px-4 py-1 rounded-full hover:bg-black hover:text-white transition">
