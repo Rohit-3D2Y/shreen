@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Footer from "./Footer";
 
 const projects = [
   {
@@ -65,8 +66,9 @@ const AllProducts = () => {
     !isMobile || showAll ? projects : projects.slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-[#eae5df] py-12 px-4 brico -tracking-wider ">
-      <div className="max-w-6xl mx-auto">
+    <>
+    <div className="bg-[#eae5df] brico -tracking-wider ">
+      <div className="">
         {/* Hero Section */}
         <div className="relative w-full h-[70vh] overflow-hidden">
           <img
@@ -80,16 +82,16 @@ const AllProducts = () => {
               Futuristic Elegance
             </p>
             <h1 className="text-5xl md:text-[10rem] brico -tracking-wider">
-              Shreen Designs
+              Our Products
             </h1>
             <button className="px-6 py-3 rounded-2xl text-sm font-medium text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-md hover:bg-white/20 transition-all duration-200">
-              Let's Create Together
+              Buy Now
             </button>
           </div>
         </div>
 
         {/* Cards Section */}
-        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 mt-20">
+        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 mt-20 max-w-7xl mx-auto">
           {visibleProjects.map((project, index) => (
             <div
               key={index}
@@ -125,6 +127,8 @@ const AllProducts = () => {
         )}
       </div>
     </div>
+      <Footer />
+    </>
   );
 };
 
