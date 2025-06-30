@@ -6,6 +6,7 @@ import HeroStats from './components/HeroStats'
 import Services from './components/Services'
 import ProductShowcase from './components/ProductShowcase'
 import Footer from './components/Footer'
+import AllProducts from './components/AllProducts'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <DesignProcess />
         <HeroStats />
         <Footer />
+        <AllProducts />
       </div>
       </>
   )

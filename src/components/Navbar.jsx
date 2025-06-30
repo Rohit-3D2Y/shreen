@@ -31,7 +31,7 @@ const Navbar = () => {
           <a href="#services" className="hover:text-yellow-500">
             Services
           </a>
-          <a href="#products" className="hover:text-yellow-500">
+          <a href="/product" className="hover:text-yellow-500">
             Products
           </a>
           <button className="border border-black px-4 py-1 rounded-full hover:bg-black hover:text-white transition">
@@ -62,9 +62,9 @@ const Navbar = () => {
           <a href="#services" className="hover:text-yellow-500">
             Services
           </a>
-          <a href="#products" className="hover:text-yellow-500">
+          <Link to="/products" className="hover:text-yellow-500">
             Products
-          </a>
+          </Link>
           <button className="border border-black px-4 py-1 rounded-full hover:bg-black hover:text-white transition">
             Connect
           </button>
