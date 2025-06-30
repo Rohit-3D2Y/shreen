@@ -62,7 +62,7 @@ const ProductSlider = () => {
     <div className=" px-4 md:px-12">
 
       <div className="relative flex items-center justify-center">
-        <div className="flex items-center justify-center space-x-6 mt-10 overflow-hidden max-w-6xl">
+        <div className="flex items-center justify-center md:space-x-6 mt-10 max-w-6xl">
   {getVisibleProducts().map((product, index) => (
     <div
       key={`${product.originalIndex}-${currentIndex}`}
