@@ -32,9 +32,9 @@ const Navbar = () => {
           <a href="#services" className="hover:text-yellow-500">
             Services
           </a>
-          <Link to="/product" className="hover:text-yellow-500">
+          <a href="/product" className="hover:text-yellow-500">
             Products
-          </Link>
+          </a>
           <button className="border border-black px-4 py-1 rounded-full hover:bg-black hover:text-white transition">
             Connect
           </button>
