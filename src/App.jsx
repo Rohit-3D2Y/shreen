@@ -21,6 +21,14 @@ const Home = () => (
   </>
 );
 
+const Features = () => (
+  <>
+  <DesignProcess />
+  <HeroStats />
+  <Footer />
+  </>
+)
+
 const App = () => {
   return (
     <Router>
@@ -28,6 +36,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<AllProducts />} />
+        <Route path='/features' element={<Features />}  />
       </Routes>
     </Router>
   );

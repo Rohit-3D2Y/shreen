@@ -18,11 +18,11 @@ const Navbar = () => {
   return (
     <nav className="w-full bg-[#eae5df] shadow-md z-50 brico -tracking-wider">
       <div className="max-w-9xl mx-auto px-6 py-4 flex justify-between items-center text-black font-medium">
-        <h1 className="text-3xl font-bold">Shreen Interiors</h1>
+        <h1 className="text-3xl font-bold cursor-pointer">Shreen Interiors</h1>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-10 items-center">
-          <a href="#features" className="hover:text-yellow-500">
+          <a href="/features" className="hover:text-yellow-500">
             Features
           </a>
           <a href="#about-us" className="hover:text-yellow-500">

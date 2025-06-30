@@ -45,7 +45,7 @@ const projects = [
 ];
 
 const images = [
-  'https://themes.pixelwars.org/interique/demo-01/wp-content/uploads/sites/2/2025/04/Modern-Sculptural-Chair-1300x1200.jpeg'
+  'https://media.designcafe.com/wp-content/uploads/2023/01/31151510/contemporary-interior-design-ideas-for-your-home.jpg'
 ];
 
 const AllProducts = () => {
