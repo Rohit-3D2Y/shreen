@@ -62,7 +62,7 @@ const Footer = () => {
         {/* Contact Section */}
         <div className="flex flex-col">
           <h3 className="text-2xl font-semibold text-[#9c6644] mb-4">Contact</h3>
-          <p className="text-md">Arc Interior Studio</p>
+          <p className="text-md">Shreen Interior Studio</p>
           <p className="text-md">123 Design Lane, Elegant City, India</p>
           <p className="text-md mt-2">Email: <span className="text-[#7f5539] font-semibold">info@shreeninterior.com</span></p>
           <p className="text-md">Phone: +91 98765 43210</p>

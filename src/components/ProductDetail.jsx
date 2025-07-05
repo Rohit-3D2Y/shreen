@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { FaWhatsapp } from "react-icons/fa";
 
 // Mock product database
 const productData = {
@@ -32,6 +33,11 @@ const productData = {
         name: "Tufted Leather Sofa",
         image: "https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNvZmF8ZW58MHx8MHx8fDA%3D",
         description: "Timeless Chesterfield design with deep button tufting and rolled arms — a statement piece for luxury interiors.",
+      },
+      {
+        name: "Sofa Chaise Lounge",
+        image: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c29mYXxlbnwwfHwwfHx8MA%3D%3D",
+        description: "A stylish chaise lounge with a sleek profile and soft upholstery — perfect for reading nooks or as an accent piece.",
       },
     ],
     whatsappNumber: "919999999999",
@@ -67,6 +73,11 @@ const productData = {
         image: "https://plus.unsplash.com/premium_photo-1705169612410-50d9576035f7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fGNoYWlycyUyMGZvciUyMGludGVyaW9yJTIwd2Vic2l0ZSUyMGhvcml6b250YWx8ZW58MHx8MHx8fDA%3D",
         description: "Handwoven rattan with a natural finish — adds a breezy, earthy feel to patios, balconies, or relaxed living spaces.",
       },
+      {
+        name: "Classic Leather Armchair",
+        image: "https://plus.unsplash.com/premium_photo-1673282248916-31daec36675e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGNoYWlyc3xlbnwwfHwwfHx8MA%3D%3D",
+        description: "A timeless leather armchair with deep seating and classic design — perfect for reading nooks or as a statement piece in any room.",
+      },
     ],
     whatsappNumber: "919999999999",
   },
@@ -100,6 +111,11 @@ const productData = {
         name: "ScandiLeaf Round Table",
         image: "https://plus.unsplash.com/premium_photo-1701163818441-27c39b781acd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjF8fGRpbmluZyUyMHRhYmxlJTIwZm9yJTIwaW50ZXJpb3IlMjB3ZWJzaXRlJTIwaG9yaXpvbnRhbHxlbnwwfHwwfHx8MA%3D%3D",
         description: "Scandinavian-inspired round table with a compact design — great for apartments and small dining corners.",
+      },
+      {
+        name: "Robin Round Table",
+        image: "https://images.unsplash.com/photo-1615803796379-b4cda8e9c09c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHRhYmxlc3xlbnwwfHwwfHx8MA%3D%3D",
+        description: "A modern round table with a sleek design and sturdy base — perfect for casual dining or coffee breaks.",
       },
     ],
     whatsappNumber: "919999999999",
@@ -135,6 +151,11 @@ const productData = {
         image: "https://plus.unsplash.com/premium_photo-1732730224515-43bd75ebb2b4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA1fHxjb25zb2xldGFibGVzJTIwZm9yJTIwaW50ZXJpb3IlMjB3ZWJzaXRlJTIwaG9yaXpvbnRhbHxlbnwwfHwwfHx8MA%3D%3D",
         description: "Crafted from reclaimed wood with a raw, organic look — this eco-chic console brings nature indoors effortlessly.",
       },
+      {
+        name: "UrbanRust Console",
+        image: "https://plus.unsplash.com/premium_photo-1681412205470-77848a519359?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHRhYmxlfGVufDB8fDB8fHww",
+        description: "A blend of metal and wood with an urban edge — designed for modern lofts and contemporary spaces.",
+      },
     ],
     whatsappNumber: "919999999999",
   },
@@ -168,6 +189,11 @@ const productData = {
         name: "ScandiWhite Wardrobe",
         image: "https://images.unsplash.com/photo-1723257129370-508fb3efbe88?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fHdhcmRyb2JlcyUyMGZvciUyMGludGVyaW9yJTIwd2Vic2l0ZSUyMGhvcml6b250YWx8ZW58MHx8MHx8fDA%3D",
         description: "Inspired by Scandinavian design, this all-white wardrobe features clean lines, soft tones, and airy aesthetics for a calming bedroom vibe.",
+      },
+      {
+        name: "NordicBliss Wardrobe",
+        image: "https://images.unsplash.com/photo-1672137233327-37b0c1049e77?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2FyZHJvYmVzfGVufDB8fDB8fHww",
+        description: "A sleek Nordic-inspired wardrobe with a blend of wood and metal accents — designed for modern minimalists who appreciate simplicity and functionality.",
       },
     ],
     whatsappNumber: "919999999999",
@@ -203,6 +229,11 @@ const productData = {
         image: "https://plus.unsplash.com/premium_photo-1661777872222-6ff4f83bc914?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fHR2dW5pdHMlMjBmb3IlMjBpbnRlcmlvciUyMHdlYnNpdGUlMjBob3Jpem9udGFsfGVufDB8fDB8fHww",
         description: "Classic and minimal wooden TV unit that complements any decor style.",
       },
+      {
+        name: "Classic Wooden TV Unit",
+        image: "https://plus.unsplash.com/premium_photo-1681236323432-3df82be0c1b0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dHYlMjB1bml0c3xlbnwwfHwwfHx8MA%3D%3D",
+        description: "This classic wooden TV unit features intricate carvings and a rich finish, adding elegance to your living room. ",
+      },
     ],
     whatsappNumber: "919999999999",
   },
@@ -236,6 +267,11 @@ const productData = {
         name: "Vintage Charm Corner",
         image: "https://images.unsplash.com/photo-1673499137960-3b289a7198d0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwNXx8fGVufDB8fHx8fA%3D%3D",
         description: "A vintage-inspired corner with a wooden table, a soft glow lamp, and a rustic wall clock — perfect for cafes, reading nooks, or cozy corners.",
+      },
+      {
+        name: "Natural Light Haven",
+        image: "https://images.unsplash.com/photo-1743928824407-86b8a5c9e6b5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fHw%3D",
+        description: "Reflective surfaces and soft lighting create a serene atmosphere — ideal for yoga studios, wellness centers, or peaceful retreats.",
       },
     ],
     whatsappNumber: "919999999999",
@@ -271,6 +307,11 @@ const productData = {
         image: "https://images.unsplash.com/photo-1738655801817-08ceb640a377?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE4fHx8ZW58MHx8fHx8",
         description: "An elegant vanity setup with tulip flowers, a soft glow lamp, and a curved mirror — designed to bring natural light and gentle elegance into your room.",
       },
+      {
+        name: "Soft Glow Vanity",
+        image: "https://plus.unsplash.com/premium_photo-1661428922280-3f8dd34341eb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDQwfHx8ZW58MHx8fHx8",
+        description: "A serene vanity corner with soft lighting, a round mirror, and delicate decor — perfect for creating a peaceful and stylish personal space.",
+      },
     ],
     whatsappNumber: "919999999999",
   },
@@ -299,36 +340,44 @@ const ProductDetail = () => {
           alt={product.title}
           className="absolute inset-0 w-full h-full object-cover brightness-90"
         />
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-0" />
         <div className="absolute inset-0 flex items-center justify-center z-10">
-          <h1 className="text-white text-5xl md:text-7xl font-bold">{product.title}</h1>
+          <h1 className="text-white text-5xl md:text-7xl font-bold drop-shadow-xl text-center">
+            {product.title}
+          </h1>
         </div>
       </div>
 
       {/* Product Variants Grid */}
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <h2 className="text-3xl font-semibold mb-8 text-[#3a2e25]">{product.description}</h2>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-12">
+        <h2 className="text-md sm:text-xl md:text-3xl font-semibold mb-10 text-[#3a2e25] leading-relaxed tracking-wide text-center">
+          {product.description}
+        </h2>
 
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {product.variants.map((variant, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300"
+              className="group bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300"
             >
-              <img
-                src={variant.image}
-                alt={variant.name}
-                className="w-full h-60 object-cover"
-              />
-              <div className="p-5 space-y-2">
+              <div className="overflow-hidden">
+                <img
+                  src={variant.image}
+                  alt={variant.name}
+                  className="w-full h-60 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-5 space-y-3">
                 <h3 className="text-xl font-bold text-[#402d22]">{variant.name}</h3>
                 <p className="text-gray-600 text-sm">{variant.description}</p>
+
                 <a
                   href={`https://wa.me/${product.whatsappNumber}?text=I'm interested in the ${variant.name}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block mt-3 bg-green-600 text-white px-4 py-2 rounded-full text-sm hover:bg-green-700 transition"
+                  className="inline-flex items-center gap-2 mt-3 bg-green-600 text-white px-4 py-2 rounded-full text-sm hover:bg-green-700 hover:scale-105 transition-transform"
                 >
+                  <FaWhatsapp className="text-lg" />
                   Buy on WhatsApp
                 </a>
               </div>

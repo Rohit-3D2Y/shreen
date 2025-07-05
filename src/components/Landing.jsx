@@ -43,7 +43,7 @@ const Landing = () => {
         </div>
 
         {/* Arrows */}
-        <button
+        {/* <button
           onClick={prev}
           className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 p-2 rounded-full"
         >
@@ -54,7 +54,7 @@ const Landing = () => {
           className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 p-2 rounded-full"
         >
           <ChevronRight className="text-white w-5 h-5 md:w-6 md:h-6" />
-        </button>
+        </button> */}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-10 p-4 max-w-7xl mx-auto">
         <div className="rounded-xl overflow-hidden">
