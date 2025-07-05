@@ -42,7 +42,7 @@ tag: "Learn More",    image: "https://plus.unsplash.com/premium_photo-1686090449
   {
     title: "Customized Decorative elements",
 tag: "Learn More",    image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGludGVyaW9yfGVufDB8fDB8fHww",
-     id:"decor-elements"
+     id:"decorelements"
   },
 ];
 
