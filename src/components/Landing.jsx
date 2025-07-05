@@ -11,6 +11,9 @@ const Landing = () => {
   const next = () => setCurrent((prev) => (prev + 1) % images.length);
   const prev = () => setCurrent((prev) => (prev - 1 + images.length) % images.length);
 
+   // Your WhatsApp number here in international format (e.g., 91 for India)
+  const whatsappURL = `https://wa.me/919876543210?text=Hi,%20I%20want%20to%20know%20more%20about%20your%20work`;
+
   return (
     <>
       {/* Hero Section */}
@@ -33,9 +36,9 @@ const Landing = () => {
           <h1 className="text-5xl md:text-[10rem] brico -tracking-wider">
             Shreen Designs
           </h1>
-         <button className="px-6 py-3 rounded-2xl text-sm font-medium text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-md hover:bg-white/20 transition-all duration-200">
+         <a href={whatsappURL} className="px-6 py-3 rounded-2xl text-sm font-medium text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-md hover:bg-white/20 transition-all duration-200">
   Let's Create Together
-</button>
+</a>
 
         </div>
 

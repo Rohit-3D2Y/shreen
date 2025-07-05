@@ -16,6 +16,9 @@ const Navbar = () => {
     }
   }, [isOpen]);
 
+  // Your WhatsApp number here in international format (e.g., 91 for India)
+  const whatsappURL = `https://wa.me/919876543210?text=Hi,%20I%20want%20to%20know%20more%20about%20your%20work`;
+
   return (
     <nav className="w-full bg-[#eae5df] shadow-md z-50 brico -tracking-wider">
       <div className="max-w-9xl mx-auto px-6 py-4 flex justify-between items-center text-black font-medium">
@@ -26,18 +29,23 @@ const Navbar = () => {
           <a href="/features" className="hover:text-yellow-500">
             Features
           </a>
-          <a href="#about-us" className="hover:text-yellow-500">
-            About Us
+          <a href="/gallery" className="hover:text-yellow-500">
+            Gallery
           </a>
-          <a href="#services" className="hover:text-yellow-500">
-            Services
+          <a href="/contact" className="hover:text-yellow-500">
+            Contact Us
           </a>
           <a href="/product" className="hover:text-yellow-500">
             Products
           </a>
-          <button className="border border-black px-4 py-1 rounded-full hover:bg-black hover:text-white transition">
+          <a
+            href={whatsappURL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-black px-4 py-1 rounded-full hover:bg-black hover:text-white transition"
+          >
             Connect
-          </button>
+          </a>
         </div>
 
         {/* Hamburger */}
@@ -54,21 +62,26 @@ const Navbar = () => {
           ref={menuRef}
           className="w-full bg-white flex flex-col items-center gap-4 py-6 text-black md:hidden shadow-md"
         >
-          <a href="#features" className="hover:text-yellow-500">
+          <a href="/features" className="hover:text-yellow-500">
             Features
           </a>
-          <a href="#about-us" className="hover:text-yellow-500">
-            About Us
+          <a href="/gallery" className="hover:text-yellow-500">
+            Gallery
           </a>
-          <a href="#services" className="hover:text-yellow-500">
-            Services
+          <a href="/contact" className="hover:text-yellow-500">
+            Contact Us
           </a>
           <Link to="/product" className="hover:text-yellow-500">
             Products
           </Link>
-          <button className="border border-black px-4 py-1 rounded-full hover:bg-black hover:text-white transition">
+          <a
+            href={whatsappURL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-black px-4 py-1 rounded-full hover:bg-black hover:text-white transition"
+          >
             Connect
-          </button>
+          </a>
         </div>
       )}
     </nav>

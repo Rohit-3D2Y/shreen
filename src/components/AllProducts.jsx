@@ -1,46 +1,48 @@
 import React, { useState, useEffect } from "react";
 import Footer from "./Footer";
+import { Link, useNavigate } from "react-router-dom";
 
 const projects = [
   {
     title: "Sofa",
-    tag: "Buy Now",
+    tag: "Learn More",
     image: "https://images.unsplash.com/photo-1749741335932-f5295ee9afd0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8",
+    id:"sofa"
   },
   {
     title: "Chairs",
-    tag: "Buy Now",
-    image: "https://plus.unsplash.com/premium_photo-1674815329488-c4fc6bf4ced8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW50ZXJpb3J8ZW58MHx8MHx8fDA%3D",
+tag: "Learn More",    image: "https://plus.unsplash.com/premium_photo-1674815329488-c4fc6bf4ced8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW50ZXJpb3J8ZW58MHx8MHx8fDA%3D",
+     id:"chairs"
   },
   {
     title: "Dining Tables",
-    tag: "Buy Now",
-    image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW50ZXJpb3J8ZW58MHx8MHx8fDA%3D",
+tag: "Learn More",    image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW50ZXJpb3J8ZW58MHx8MHx8fDA%3D",
+     id:"diningtables"
   },
   {
     title: "Console Tables",
-    tag: "Buy Now",
-    image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aW50ZXJpb3J8ZW58MHx8MHx8fDA%3D",
+tag: "Learn More",    image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aW50ZXJpb3J8ZW58MHx8MHx8fDA%3D",
+     id:"consoletables"
   },
   {
     title: "Wardrobes",
-    tag: "Buy Now",
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGludGVyaW9yfGVufDB8fDB8fHww",
+tag: "Learn More",    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGludGVyaW9yfGVufDB8fDB8fHww",
+     id:"wardrobes"
   },
   {
     title: "TV Units",
-    tag: "Buy Now",
-    image: "https://plus.unsplash.com/premium_photo-1670360414946-e33a828d1d52?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGludGVyaW9yfGVufDB8fDB8fHww",
+tag: "Learn More",    image: "https://plus.unsplash.com/premium_photo-1670360414946-e33a828d1d52?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGludGVyaW9yfGVufDB8fDB8fHww",
+     id:"tvunits"
   },
   {
     title: "Lights",
-    tag: "Buy Now",
-    image: "https://plus.unsplash.com/premium_photo-1686090449194-04ac2af9f758?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGludGVyaW9yfGVufDB8fDB8fHww",
+tag: "Learn More",    image: "https://plus.unsplash.com/premium_photo-1686090449194-04ac2af9f758?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGludGVyaW9yfGVufDB8fDB8fHww",
+     id:"lights"
   },
   {
     title: "Customized Decorative elements",
-    tag: "Buy Now",
-    image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGludGVyaW9yfGVufDB8fDB8fHww",
+tag: "Learn More",    image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGludGVyaW9yfGVufDB8fDB8fHww",
+     id:"decor-elements"
   },
 ];
 
@@ -51,6 +53,8 @@ const images = [
 const AllProducts = () => {
   const [showAll, setShowAll] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  const navigate = useNavigate();
 
   // Detect screen size on load and on resize
   useEffect(() => {
@@ -93,9 +97,12 @@ const AllProducts = () => {
         {/* Cards Section */}
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 mt-20 max-w-7xl mx-auto px-4">
   {visibleProjects.map((project, index) => (
+    <Link to={`/${project.id}`} key={index}>
     <div
       key={index}
       className="group relative bg-gradient-to-br from-[#e7daca] to-[#ddd0bf] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer backdrop-blur-sm border border-white/20"
+
+     
     >
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
@@ -137,6 +144,7 @@ const AllProducts = () => {
       {/* Subtle shine effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
     </div>
+    </Link>
   ))}
 </div>
 

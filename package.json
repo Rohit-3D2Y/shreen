@@ -11,6 +11,7 @@
     "host": "vite --host"
   },
   "dependencies": {
+    "@studio-freight/react-lenis": "^0.0.47",
     "lucide-react": "^0.522.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
