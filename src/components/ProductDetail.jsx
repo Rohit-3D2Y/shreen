@@ -6,8 +6,8 @@ import { FaWhatsapp } from "react-icons/fa";
 const productData = {
   sofa: {
     title: "Sofa",
-    heroImage: "https://images.unsplash.com/photo-1749741335932-f5295ee9afd0?w=1600",
-    description: "Comfortable modern sofas for every living space.",
+    heroImage: "https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?q=80&w=1109&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "Spacious and stylish sofas that redefine comfort in your living space.",
     variants: [
       {
         name: "Modern Gray Sofa",
@@ -31,7 +31,7 @@ const productData = {
       },
       {
         name: "Tufted Leather Sofa",
-        image: "https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNvZmF8ZW58MHx8MHx8fDA%3D",
+        image: "https://plus.unsplash.com/premium_photo-1683121701422-11cdf74c48a8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fHw%3D",
         description: "Timeless Chesterfield design with deep button tufting and rolled arms — a statement piece for luxury interiors.",
       },
       {
@@ -333,55 +333,66 @@ const ProductDetail = () => {
 
   return (
     <div className="bg-[#f8f4ef] min-h-screen brico -tracking-wider">
-      {/* Hero Image */}
+      {/* Hero Image Section */}
       <div className="relative w-full h-[75vh] overflow-hidden">
+
+        {/* Background Image */}
         <img
           src={product.heroImage}
           alt={product.title}
-          className="absolute inset-0 w-full h-full object-cover brightness-90"
+          className="absolute inset-0 w-full h-full object-cover brightness-75"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-0" />
-        <div className="absolute inset-0 flex items-center justify-center z-10">
-          <h1 className="text-white text-5xl md:text-7xl font-bold drop-shadow-xl text-center">
-            {product.title}
-          </h1>
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent" />
+
+        {/* Centered Content with Backdrop Blur */}
+        <div className="absolute inset-0 flex items-center justify-center px-4">
+          <div className="text-center backdrop-blur-sm bg-black/30 rounded-xl p-6 md:p-10 text-white shadow-lg max-w-3xl">
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight drop-shadow-md">
+              {product.title}
+            </h1>
+            <p className="mt-4 text-base md:text-xl text-gray-200 drop-shadow-sm">
+              {product.description}
+            </p>
+          </div>
         </div>
       </div>
 
+
+
       {/* Product Variants Grid */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-12">
-        <h2 className="text-md sm:text-xl md:text-3xl font-semibold mb-10 text-[#3a2e25] leading-relaxed tracking-wide text-center">
+        {/* <h2 className="text-md sm:text-xl md:text-3xl font-semibold mb-10 text-[#3a2e25] leading-relaxed tracking-wide text-center">
           {product.description}
-        </h2>
+        </h2> */}
 
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {product.variants.map((variant, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300"
+              className="bg-white rounded-xl overflow-hidden transform transition duration-300 hover:scale-[1.03] hover:shadow-xl"
             >
-              <div className="overflow-hidden">
-                <img
-                  src={variant.image}
-                  alt={variant.name}
-                  className="w-full h-60 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-5 space-y-3">
-                <h3 className="text-xl font-bold text-[#402d22]">{variant.name}</h3>
-                <p className="text-gray-600 text-sm">{variant.description}</p>
-
+              <img
+                src={variant.image}
+                alt={variant.name}
+                className="w-full h-64 object-cover transition duration-500 group-hover:scale-105"
+              />
+              <div className="p-4 space-y-2">
+                <h3 className="text-xl font-semibold text-[#3a2e25]">{variant.name}</h3>
+                <p className="text-sm text-[#6b4f3b]">{variant.description}</p>
                 <a
-                  href={`https://wa.me/${product.whatsappNumber}?text=I'm interested in the ${variant.name}`}
+                  href={`https://wa.me/${product.whatsappNumber}?text=Hi, I'm interested in your ${variant.name}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-3 bg-green-600 text-white px-4 py-2 rounded-full text-sm hover:bg-green-700 hover:scale-105 transition-transform"
+                  className="inline-flex items-center gap-2 px-4 py-2 mt-3 bg-[#7f5539] text-white rounded-full text-sm hover:bg-[#9c6644] transition"
                 >
                   <FaWhatsapp className="text-lg" />
-                  Buy on WhatsApp
+                  Enquire on WhatsApp
                 </a>
               </div>
             </div>
+
           ))}
         </div>
       </div>
