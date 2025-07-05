@@ -7,7 +7,7 @@ body {
 }
 @font-face {
   font-family: 'Bricolage Grotesque';
-  src: url('assets/bricolage-grotesque_5.2.6_latin-500-normal.woff2') format('woff2');
+  src: url('/fonts/bricolage-grotesque_5.2.6_latin-500-normal.woff2') format('woff2');
   font-weight: 600; /* optional: declare weight here */
   font-style: normal;
 }
