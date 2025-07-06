@@ -20,9 +20,14 @@ const Navbar = () => {
   const whatsappURL = `https://wa.me/919876543210?text=Hi,%20I%20want%20to%20know%20more%20about%20your%20work`;
 
   return (
-    <nav className="w-full bg-[#eae5df] shadow-md z-50 brico -tracking-wider">
-      <div className="max-w-9xl mx-auto px-6 py-4 flex justify-between items-center text-black font-medium">
-        <a href="/" className="text-3xl font-bold">Shreen Interiors</a>
+    <nav className="w-full bg-[#eae5df] shadow-md z-50 brico -tracking-wider sticky top-0">
+      <div
+        className="max-w-9xl mx-auto px-6 py-4 flex justify-between items-center text-black font-medium
+      "
+      >
+        <a href="/" className="text-3xl font-bold">
+          Shreen Interiors
+        </a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-10 items-center">
