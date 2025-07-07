@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const services = [
   {
@@ -66,6 +67,18 @@ const Services = () => {
   const [visibleCount, setVisibleCount] = useState(4);
   const [isMobile, setIsMobile] = useState(false);
 
+  const location = useLocation();
+
+  useEffect(() => {
+    
+    if (location.hash === "#services") {
+      const servicesSection = document.getElementById("services");
+      if (servicesSection) {
+        servicesSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location.hash]);
+
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 640);
@@ -85,7 +98,7 @@ const Services = () => {
   };
 
   return (
-    <section className="py-16 px-4 md:px-12 lg:px-24 text-black mt-10 relative">
+    <section id="services" className="py-16 px-4 md:px-12 lg:px-24 text-black mt-10 relative">
       <div className="max-w-7xl mx-auto sm:pb-0">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start mb-16">
