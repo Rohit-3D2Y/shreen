@@ -172,7 +172,7 @@ const Services = () => {
                     }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    Buy Now
+                    Contact Us
                     <motion.svg
                       className="w-4 h-4"
                       fill="none"

@@ -88,9 +88,9 @@ const AllProducts = () => {
             <h1 className="text-5xl md:text-[10rem] brico -tracking-wider">
               Our Products
             </h1>
-            <button className="px-6 py-3 rounded-2xl text-sm font-medium text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-md hover:bg-white/20 transition-all duration-200">
-              Buy Now
-            </button>
+            <span className="px-6 py-3 rounded-2xl text-sm font-medium text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-md hover:bg-white/20 transition-all duration-200">
+              Check Now
+            </span>
           </div>
         </div>
 

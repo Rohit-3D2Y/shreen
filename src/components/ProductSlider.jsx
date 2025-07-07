@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowLeft, ArrowRight, ShoppingCart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const products = [
   {
@@ -41,6 +42,7 @@ const products = [
 ];
 
 const ProductSlider = () => {
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prev = () =>
@@ -82,10 +84,10 @@ const ProductSlider = () => {
       {/* Overlay Mask */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col items-center justify-end px-4 pb-4">
         <h2 className="text-white text-xl font-semibold mb-2 text-center">{product.title}</h2>
-        <button className="backdrop-blur-sm bg-white/20 text-white border border-white/40 font-medium px-5 py-2 rounded-full hover:scale-105 transition-all shadow-md flex items-center gap-2">
+        <Link to={`/${product.title.toLowerCase()}`} className="backdrop-blur-sm bg-white/20 text-white border border-white/40 font-medium px-5 py-2 rounded-full hover:scale-105 transition-all shadow-md flex items-center gap-2">
           <ShoppingCart className="w-4 h-4" />
-          Buy Now
-        </button>
+          Buyyy Now
+        </Link>
       </div>
     </div>
   ))}
