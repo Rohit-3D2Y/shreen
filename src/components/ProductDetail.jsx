@@ -3,6 +3,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
+import {
+  RippleEffect,
+  HoverText,
+  AnimatedText,
+  AnimatedButton,
+} from "../utils/animations";
 
 // Mock product database
 const productData = {
@@ -486,15 +492,20 @@ const ProductDetail = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <motion.button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-2 bg-white/90 backdrop-blur-sm text-[#3a2e25] px-4 py-2 rounded-full shadow-lg hover:bg-white transition-all"
-          whileHover={{ scale: 1.05, x: -5 }}
-          whileTap={{ scale: 0.95 }}
+        <RippleEffect
+          className="inline-block rounded-full"
+          rippleColor="rgba(168, 95, 49, 0.3)"
         >
-          <ArrowLeft className="w-4 h-4" />
-          Back
-        </motion.button>
+          <motion.button
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2 bg-white/90 backdrop-blur-sm text-[#3a2e25] px-4 py-2 rounded-full shadow-lg hover:bg-white transition-all"
+            whileHover={{ scale: 1.05, x: -5 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <AnimatedText>Back</AnimatedText>
+          </motion.button>
+        </RippleEffect>
       </motion.div>
 
       {/* Hero Image Section */}
@@ -526,7 +537,7 @@ const ProductDetail = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              {product.title}
+              <HoverText className="text-white">{product.title}</HoverText>
             </motion.h1>
             <motion.p
               className="text-base md:text-xl text-gray-200 drop-shadow-sm"
@@ -534,7 +545,9 @@ const ProductDetail = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.9 }}
             >
-              {product.description}
+              <AnimatedText className="text-gray-200">
+                {product.description}
+              </AnimatedText>
             </motion.p>
           </div>
         </motion.div>
@@ -556,8 +569,10 @@ const ProductDetail = () => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            Our Collection <br />
-            <span className="text-[#a57151]">of {product.title}</span>
+            <HoverText>Our Collection</HoverText> <br />
+            <span className="text-[#a57151]">
+              <HoverText>of {product.title}</HoverText>
+            </span>
           </motion.h2>
           <motion.div
             className="max-w-md"
@@ -588,86 +603,93 @@ const ProductDetail = () => {
       >
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {product.variants.map((variant, index) => (
-            <motion.div
+            <RippleEffect
               key={index}
-              className="group bg-gradient-to-br from-[#e7daca] to-[#ddd0bf] rounded-2xl overflow-hidden shadow-lg border border-white/20 cursor-pointer h-[500px] flex flex-col"
-              variants={cardVariants}
-              whileHover={{
-                y: -10,
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)",
-                transition: { duration: 0.3 },
-              }}
+              className="block rounded-2xl"
+              rippleColor="rgba(168, 95, 49, 0.3)"
             >
-              {/* Image Container */}
-              <div className="relative overflow-hidden h-64 flex-shrink-0">
-                <motion.img
-                  src={variant.image}
-                  alt={variant.name}
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.4 }}
-                />
-                {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-
-              {/* Content Container - Flex grow to fill remaining space */}
-              <div className="p-6 flex flex-col flex-grow">
-                {/* Text Content */}
-                <div className="flex-grow">
-                  <motion.h3
-                    className="text-xl font-semibold text-[#3a2e25] group-hover:text-[#a57151] transition-colors duration-300 mb-3"
-                    whileHover={{ x: 5 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {variant.name}
-                  </motion.h3>
-                  <p className="text-sm text-[#6b4f3b] leading-relaxed">
-                    {variant.description}
-                  </p>
+              <motion.div
+                className="group bg-gradient-to-br from-[#e7daca] to-[#ddd0bf] rounded-2xl overflow-hidden shadow-lg border border-white/20 cursor-pointer h-[500px] flex flex-col"
+                variants={cardVariants}
+                whileHover={{
+                  y: -10,
+                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)",
+                  transition: { duration: 0.3 },
+                }}
+              >
+                {/* Image Container */}
+                <div className="relative overflow-hidden h-64 flex-shrink-0">
+                  <motion.img
+                    src={variant.image}
+                    alt={variant.name}
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
-                {/* WhatsApp Button - Always at bottom */}
-                <motion.a
-                  href={`https://wa.me/${
-                    product.whatsappNumber
-                  }?text=Hi, I'm interested in your ${encodeURIComponent(
-                    variant.name
-                  )} from the ${encodeURIComponent(product.title)} collection.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 mt-4 bg-[#a57151] text-white rounded-full text-sm font-medium shadow-md w-full justify-center flex-shrink-0"
-                  whileHover={{
-                    scale: 1.02,
-                    backgroundColor: "#7f5539",
-                    boxShadow: "0 8px 25px rgba(165, 113, 81, 0.3)",
-                    transition: { duration: 0.2 },
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <FaWhatsapp className="text-lg" />
-                  <span>Enquire on WhatsApp</span>
-                  <motion.svg
-                    className="w-4 h-4 ml-1"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                    whileHover={{ x: 3 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </motion.svg>
-                </motion.a>
-              </div>
+                {/* Content Container - Flex grow to fill remaining space */}
+                <div className="p-6 flex flex-col flex-grow">
+                  {/* Text Content */}
+                  <div className="flex-grow">
+                    <motion.h3
+                      className="text-xl font-semibold text-[#3a2e25] group-hover:text-[#a57151] transition-colors duration-300 mb-3"
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <HoverText>{variant.name}</HoverText>
+                    </motion.h3>
+                    <p className="text-sm text-[#6b4f3b] leading-relaxed">
+                      <AnimatedText>{variant.description}</AnimatedText>
+                    </p>
+                  </div>
 
-              {/* Subtle shine effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
-            </motion.div>
+                  {/* WhatsApp Button - Always at bottom */}
+                  <motion.a
+                    href={`https://wa.me/${
+                      product.whatsappNumber
+                    }?text=Hi, I'm interested in your ${encodeURIComponent(
+                      variant.name
+                    )} from the ${encodeURIComponent(
+                      product.title
+                    )} collection.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-3 mt-4 bg-[#a57151] text-white rounded-full text-sm font-medium shadow-md w-full justify-center flex-shrink-0"
+                    whileHover={{
+                      scale: 1.02,
+                      backgroundColor: "#7f5539",
+                      boxShadow: "0 8px 25px rgba(165, 113, 81, 0.3)",
+                      transition: { duration: 0.2 },
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <FaWhatsapp className="text-lg" />
+                    <AnimatedText>Enquire on WhatsApp</AnimatedText>
+                    <motion.svg
+                      className="w-4 h-4 ml-1"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                      whileHover={{ x: 3 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </motion.svg>
+                  </motion.a>
+                </div>
+
+                {/* Subtle shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+              </motion.div>
+            </RippleEffect>
           ))}
         </div>
       </motion.div>
@@ -688,7 +710,9 @@ const ProductDetail = () => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Ready to Transform Your Space?
+            <HoverText className="text-white">
+              Ready to Transform Your Space?
+            </HoverText>
           </motion.h2>
           <motion.p
             className="text-lg md:text-xl mb-8 text-gray-300"
@@ -697,32 +721,39 @@ const ProductDetail = () => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Connect with our design experts to bring your vision to life
+            <AnimatedText className="text-gray-300">
+              Connect with our design experts to bring your vision to life
+            </AnimatedText>
           </motion.p>
-          <motion.a
-            href={`https://wa.me/${
-              product.whatsappNumber
-            }?text=Hi, I would like to know more about your ${encodeURIComponent(
-              product.title
-            )} collection and discuss my interior design needs.`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-[#a57151] text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            whileHover={{
-              scale: 1.05,
-              backgroundColor: "#7f5539",
-              boxShadow: "0 15px 35px rgba(165, 113, 81, 0.4)",
-              transition: { duration: 0.3 },
-            }}
-            whileTap={{ scale: 0.95 }}
+          <RippleEffect
+            className="inline-block rounded-full"
+            rippleColor="rgba(165, 113, 81, 0.4)"
           >
-            <FaWhatsapp className="text-2xl" />
-            Get Free Consultation
-          </motion.a>
+            <motion.a
+              href={`https://wa.me/${
+                product.whatsappNumber
+              }?text=Hi, I would like to know more about your ${encodeURIComponent(
+                product.title
+              )} collection and discuss my interior design needs.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-[#a57151] text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              whileHover={{
+                scale: 1.05,
+                backgroundColor: "#7f5539",
+                boxShadow: "0 15px 35px rgba(165, 113, 81, 0.4)",
+                transition: { duration: 0.3 },
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaWhatsapp className="text-2xl" />
+              <AnimatedText>Get Free Consultation</AnimatedText>
+            </motion.a>
+          </RippleEffect>
         </div>
       </motion.div>
     </div>
