@@ -13,12 +13,14 @@ import ProductDetail from './components/ProductDetail';
 import ScrollToTop from './components/ScrollToTop';
 import WhatsAppContactForm from './components/WhatsappContactForm';
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis';
+import Service2 from './components/ServiceBackup';
 
 
 const Home = () => (
   <>
     <Landing />
     <Services />
+    {/* <Service2/> */}
     <ProductShowcase />
     <DesignProcess />
     <HeroStats />
