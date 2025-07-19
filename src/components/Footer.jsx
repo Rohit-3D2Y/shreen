@@ -63,12 +63,8 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a
-                href="/#services"
-                onClick={scrollToServices}
-                className="hover:text-[#ca6702] transition cursor-pointer"
-              >
-                Services
+              <a href="/gallery" className="hover:text-[#ca6702] transition">
+                Gallery
               </a>
             </li>
             <li>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import ServiceBackup from "./ServiceBackup";
 
 // Ripple Effect Component
 const RippleEffect = ({
@@ -342,124 +343,12 @@ const ServiceCard = ({ service, index }) => {
   );
 };
 
-const MobileServiceCard = ({ service, index }) => {
-  return (
-    <RippleEffect
-      className="bg-[#d4c7b8] rounded-2xl shadow-xl border border-[#c4b7a8]/50 min-w-[280px] flex-shrink-0"
-      rippleColor="rgba(168, 95, 49, 0.2)"
-    >
-      <motion.div
-        className="p-6"
-        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{
-          duration: 0.5,
-          delay: index * 0.1,
-          ease: "easeOut",
-        }}
-        whileHover={{
-          y: -4,
-          scale: 1.02,
-          boxShadow: "0 20px 40px rgba(168, 95, 49, 0.15)",
-        }}
-        whileTap={{ scale: 0.98 }}
-      >
-        <div className="flex flex-col items-center text-center">
-          <motion.div
-            className="w-16 h-16 mb-4 flex items-center justify-center bg-white rounded-xl shadow-sm"
-            whileHover={{
-              scale: 1.1,
-              rotate: [0, -5, 5, 0],
-              boxShadow: "0 8px 20px rgba(168, 95, 49, 0.2)",
-            }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ duration: 0.2 }}
-          >
-            <img
-              src={service.icon}
-              alt={service.title}
-              className="w-10 h-10 object-contain filter brightness-0 saturate-100"
-              style={{
-                filter:
-                  "invert(47%) sepia(57%) saturate(423%) hue-rotate(3deg) brightness(93%) contrast(93%)",
-              }}
-            />
-          </motion.div>
-
-          <AnimatedText
-            variant="fadeIn"
-            delay={index * 0.1 + 0.2}
-            className="text-lg font-bold text-[#a85f31] mb-3 leading-tight"
-          >
-            <motion.span
-              whileHover={{
-                scale: 1.05,
-                textShadow: "0px 2px 4px rgba(168, 95, 49, 0.3)",
-              }}
-              transition={{ duration: 0.2 }}
-            >
-              {service.title}
-            </motion.span>
-          </AnimatedText>
-
-          <AnimatedText
-            variant="slideUp"
-            delay={index * 0.1 + 0.3}
-            className="text-[#8b6f4a] mb-6 text-sm leading-relaxed"
-          >
-            {service.description}
-          </AnimatedText>
-
-          <AnimatedText variant="fadeIn" delay={index * 0.1 + 0.4}>
-            <RippleEffect
-              className="inline-block rounded-full"
-              rippleColor="rgba(255, 255, 255, 0.5)"
-            >
-              <motion.a
-                href={`https://wa.me/919876543210?text=Hi, I would like to know more about your "${encodeURIComponent(
-                  service.title
-                )}" service.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#c4a882] text-white text-sm px-4 py-2 rounded-full hover:bg-[#b8a08a] transition-all duration-300 shadow-md"
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 8px 16px rgba(196, 168, 130, 0.4)",
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get Quote
-                <motion.svg
-                  className="w-3 h-3"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  whileHover={{ x: 2, rotate: 10 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </motion.svg>
-              </motion.a>
-            </RippleEffect>
-          </AnimatedText>
-        </div>
-      </motion.div>
-    </RippleEffect>
-  );
-};
-
 const Services = () => {
   const [activeService, setActiveService] = useState(services[0].id);
   const [activeSubService, setActiveSubService] = useState(
     services[0].subServices[0].id
   );
   const [isMobile, setIsMobile] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(6);
 
   // Flatten all services for easy access
   const allSubServices = services.flatMap((service) =>
@@ -514,77 +403,8 @@ const Services = () => {
     }
   };
 
-  const handleToggle = () => {
-    if (visibleCount >= allSubServices.length) {
-      setVisibleCount(6);
-    } else {
-      setVisibleCount(allSubServices.length);
-    }
-  };
-
   if (isMobile) {
-    return (
-      <section className="py-16 px-4 bg-[#eae5df]">
-        <div className="max-w-md mx-auto">
-          <AnimatedText variant="fadeIn" className="text-center mb-12">
-            <motion.h2
-              className="text-3xl font-bold text-[#a85f31] mb-4 brico -tracking-wider"
-              whileHover={{
-                scale: 1.02,
-                textShadow: "0px 4px 8px rgba(168, 95, 49, 0.3)",
-              }}
-              transition={{ duration: 0.2 }}
-            >
-              Our Services
-            </motion.h2>
-            <motion.p
-              className="text-[#8b6f4a]"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              Professional solutions for all your design and construction needs
-            </motion.p>
-          </AnimatedText>
-
-          <div className="grid gap-6">
-            {allSubServices.slice(0, visibleCount).map((service, index) => (
-              <MobileServiceCard
-                key={service.id}
-                service={service}
-                index={index}
-              />
-            ))}
-          </div>
-
-          <AnimatedText
-            variant="fadeIn"
-            delay={0.5}
-            className="mt-8 flex justify-center"
-          >
-            <RippleEffect
-              className="inline-block rounded-full"
-              rippleColor="rgba(255, 255, 255, 0.4)"
-            >
-              <motion.button
-                onClick={handleToggle}
-                className="bg-[#a85f31] text-white px-6 py-3 rounded-full font-medium hover:bg-[#7f5539] transition-all duration-300 shadow-md"
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 8px 20px rgba(168, 95, 49, 0.4)",
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {visibleCount >= allSubServices.length
-                  ? "View Less"
-                  : "View More"}
-              </motion.button>
-            </RippleEffect>
-          </AnimatedText>
-        </div>
-      </section>
-    );
+    return <ServiceBackup />;
   }
 
   return (
@@ -596,7 +416,7 @@ const Services = () => {
             className="text-5xl lg:text-7xl font-bold text-[#a85f31] mb-6 brico -tracking-wider"
             whileHover={{
               scale: 1.02,
-              textShadow: "0px 8px 16px rgba(168, 95, 49, 0.3)",
+              textShadow: "0px 8px 16px rgba(168, 95, 49,0.3)",
             }}
             transition={{ duration: 0.3 }}
           >

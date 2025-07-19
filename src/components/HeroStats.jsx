@@ -77,15 +77,12 @@ const HeroStats = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <AnimatedText
-            variant="slideUp"
-            className="-tracking-wider brico text-6xl text-left"
-          >
-            <HoverText>
+          <div className="-tracking-wider brico text-6xl text-left">
+            <h2>
               Designing Spaces, <br />
               Defining Styles
-            </HoverText>
-          </AnimatedText>
+            </h2>
+          </div>
         </div>
 
         {/* Features Grid */}
