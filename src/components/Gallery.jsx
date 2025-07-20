@@ -568,12 +568,12 @@ const Gallery = () => {
                 animate={{ scale: 1, opacity: 1, x: "-50%", y: "-50%" }}
                 exit={{ scale: 0.8, opacity: 0, x: "-50%", y: "-50%" }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="fixed top-1/2 left-1/2 w-[90vw] h-[80vh] max-w-6xl bg-white rounded-2xl shadow-2xl overflow-hidden"
+                className="fixed top-1/2 left-1/2 w-[95vw] h-[90vh] md:w-[90vw] md:h-[80vh] max-w-6xl bg-white rounded-2xl shadow-2xl overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="h-full flex">
+                <div className="h-full flex flex-col md:flex-row">
                   {/* Main Image - Center */}
-                  <div className="flex-1 relative">
+                  <div className="flex-1 relative h-1/2 md:h-full">
                     <img
                       src={selectedProject.mainImage}
                       alt={selectedProject.title}
@@ -583,18 +583,18 @@ const Gallery = () => {
                     {/* Close button */}
                     <button
                       onClick={closeModal}
-                      className="absolute top-4 right-4 bg-white/90 hover:bg-white text-black p-2 rounded-full transition-all z-10"
+                      className="absolute top-2 right-2 md:top-4 md:right-4 bg-white/90 hover:bg-white text-black p-2 rounded-full transition-all z-10"
                     >
                       <X size={16} />
                     </button>
 
-                    {/* Navigation buttons */}
+                    {/* Navigation buttons - Hidden on mobile, visible on desktop */}
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         navigateProject("prev");
                       }}
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-black px-3 py-2 rounded-full transition-all"
+                      className="hidden md:block absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-black px-3 py-2 rounded-full transition-all"
                     >
                       <ChevronLeft size={20} />
                     </button>
@@ -603,20 +603,20 @@ const Gallery = () => {
                         e.stopPropagation();
                         navigateProject("next");
                       }}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-black px-3 py-2 rounded-full transition-all"
+                      className="hidden md:block absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-black px-3 py-2 rounded-full transition-all"
                     >
                       <ChevronRight size={20} />
                     </button>
 
-                    {/* Project info overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
-                      <span className="text-xs text-white/80 font-medium uppercase tracking-wider block mb-2">
+                    {/* Project info overlay - Adjusted for mobile */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 md:p-6">
+                      <span className="text-xs text-white/80 font-medium uppercase tracking-wider block mb-1 md:mb-2">
                         {selectedProject.category}
                       </span>
-                      <h2 className="text-2xl font-bold text-white mb-2 brico">
+                      <h2 className="text-lg md:text-2xl font-bold text-white mb-1 md:mb-2 brico">
                         {selectedProject.title}
                       </h2>
-                      <div className="flex items-center gap-4 text-sm text-white/80">
+                      <div className="flex items-center gap-2 md:gap-4 text-xs md:text-sm text-white/80">
                         <span>
                           Project #
                           {selectedProject.id.toString().padStart(2, "0")}
@@ -628,12 +628,40 @@ const Gallery = () => {
                   </div>
 
                   {/* Right Side - Project Details & Navigation */}
-                  <div className="w-80 bg-white flex flex-col">
+                  <div className="w-full md:w-80 bg-white flex flex-col h-1/2 md:h-full">
+                    {/* Mobile Navigation Buttons */}
+                    <div className="flex md:hidden justify-between items-center p-4 border-b border-gray-100">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigateProject("prev");
+                        }}
+                        className="bg-gray-100 hover:bg-gray-200 text-black p-2 rounded-full transition-all"
+                      >
+                        <ChevronLeft size={18} />
+                      </button>
+                      <span className="text-sm text-gray-600 font-medium">
+                        {projects.findIndex(
+                          (p) => p.id === selectedProject.id
+                        ) + 1}{" "}
+                        of {projects.length}
+                      </span>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigateProject("next");
+                        }}
+                        className="bg-gray-100 hover:bg-gray-200 text-black p-2 rounded-full transition-all"
+                      >
+                        <ChevronRight size={18} />
+                      </button>
+                    </div>
+
                     {/* Project Details */}
-                    <div className="flex-1 p-6 overflow-y-auto">
-                      <div className="space-y-6">
+                    <div className="flex-1 p-4 md:p-6 overflow-y-auto">
+                      <div className="space-y-4 md:space-y-6">
                         <div>
-                          <h3 className="text-sm font-semibold text-[#a85f31] mb-3 uppercase tracking-wide">
+                          <h3 className="text-sm font-semibold text-[#a85f31] mb-2 md:mb-3 uppercase tracking-wide">
                             Description
                           </h3>
                           <p className="text-gray-600 text-sm leading-relaxed">
@@ -642,7 +670,7 @@ const Gallery = () => {
                         </div>
 
                         <div>
-                          <h3 className="text-sm font-semibold text-[#a85f31] mb-3 uppercase tracking-wide">
+                          <h3 className="text-sm font-semibold text-[#a85f31] mb-2 md:mb-3 uppercase tracking-wide">
                             Design Details
                           </h3>
                           <p className="text-gray-600 text-sm leading-relaxed">
@@ -652,8 +680,8 @@ const Gallery = () => {
                       </div>
                     </div>
 
-                    {/* Navigation Thumbnails */}
-                    <div className="border-t border-gray-100 p-4">
+                    {/* Navigation Thumbnails - Hidden on mobile for better space usage */}
+                    <div className="hidden md:block border-t border-gray-100 p-4">
                       <h4 className="text-xs font-semibold text-[#a85f31] mb-3 uppercase tracking-wide">
                         Other Projects
                       </h4>
@@ -687,7 +715,7 @@ const Gallery = () => {
         {/* <div className="mt-20 mb-12 text-center">
           <p className="text-xs text-gray-400">© 2025 Shreen Interiors</p>
         </div> */}
-              <Footer/>
+        <Footer />
       </div>
     </>
   );
