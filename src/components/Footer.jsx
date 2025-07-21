@@ -25,9 +25,11 @@ const Footer = () => {
       <footer className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* About Section */}
         <div>
-          <h3 className="text-2xl font-bold text-[#9c6644] mb-4">
+          {/* <h3 className="text-2xl font-bold text-[#9c6644] mb-4">
             About Shreen Interior
-          </h3>
+          </h3> */}
+          <img src="/logo.gif" alt="GIF" width="80" height="20"></img>
+          
           <p className="text-md leading-relaxed mb-6">
             At Shreen Interior, we craft timeless spaces with elegance and
             functionality. Our team of design experts transforms your vision
