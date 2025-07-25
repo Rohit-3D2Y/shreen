@@ -7,128 +7,256 @@ import Footer from "./Footer";
 const projects = [
   {
     id: 1,
-    title: "Modern Living Space",
+    title: "Anil Shah Residence",
     category: "Residential Design",
-    mainImage:
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&auto=format&fit=crop&q=80",
-    thumbnail:
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&auto=format&fit=crop&q=80",
+    mainImage: "/projects/ANIL SHAH/1 (1).jpg",
+    thumbnail: "/projects/ANIL SHAH/1 (1).jpg",
+    images: [
+      "/projects/ANIL SHAH/1 (1).jpg",
+      "/projects/ANIL SHAH/1 (2).jpg",
+      "/projects/ANIL SHAH/1 (4).jpg",
+      "/projects/ANIL SHAH/1 (5).jpg",
+      "/projects/ANIL SHAH/1 (6).jpg",
+      "/projects/ANIL SHAH/2 (1).jpg",
+      "/projects/ANIL SHAH/2 (2).jpg",
+      "/projects/ANIL SHAH/2 (3).jpg",
+      "/projects/ANIL SHAH/2 (4).jpg",
+      "/projects/ANIL SHAH/2 (6).jpg",
+      "/projects/ANIL SHAH/2 (7).jpg",
+      "/projects/ANIL SHAH/2 (8).jpg",
+      "/projects/ANIL SHAH/4 (1).jpg",
+      "/projects/ANIL SHAH/4 (2).jpg",
+      "/projects/ANIL SHAH/4 (3).jpg",
+      "/projects/ANIL SHAH/5 (1).jpg",
+      "/projects/ANIL SHAH/5 (2).jpg",
+      "/projects/ANIL SHAH/6 (3).jpg",
+      "/projects/ANIL SHAH/6 (4).jpg",
+      "/projects/ANIL SHAH/6 (5).jpg",
+      "/projects/ANIL SHAH/6 (6).jpg",
+      "/projects/ANIL SHAH/6 (7).jpg",
+      "/projects/ANIL SHAH/6 (8).jpg",
+      "/projects/ANIL SHAH/6 (9).jpg",
+    ],
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "A contemporary residential project featuring modern design elements with elegant finishes. The space combines functionality with aesthetic appeal, creating a perfect living environment for the family.",
     details:
-      "This contemporary living space showcases clean lines, neutral tones, and carefully curated furnishings that create a harmonious blend of comfort and sophistication. The open-plan design maximizes natural light while maintaining distinct zones for relaxation and entertainment.",
+      "This residential project showcases clean lines, neutral tones, and carefully curated furnishings that create a harmonious blend of comfort and sophistication. The open-plan design maximizes natural light while maintaining distinct zones for relaxation and entertainment.",
     year: "2024",
   },
   {
     id: 2,
-    title: "Elegant Bedroom Suite",
+    title: "Arjun Pabari Project",
     category: "Interior Design",
-    mainImage:
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&auto=format&fit=crop&q=80",
-    thumbnail:
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=200&auto=format&fit=crop&q=80",
+    mainImage: "/projects/ARJUN PABARI/VIEW -01.jpg",
+    thumbnail: "/projects/ARJUN PABARI/VIEW -01.jpg",
+    images: [
+      "/projects/ARJUN PABARI/VIEW -01.jpg",
+      "/projects/ARJUN PABARI/VIEW -02.jpg",
+      "/projects/ARJUN PABARI/VIEW -03.jpg",
+    ],
     description:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.",
+      "An elegant interior design project that emphasizes modern aesthetics with a focus on creating functional and beautiful living spaces.",
     details:
-      "A serene bedroom design that prioritizes rest and relaxation through thoughtful material selection, ambient lighting, and a carefully curated color palette that promotes tranquility and comfort.",
+      "A serene design that prioritizes comfort and elegance through thoughtful material selection, ambient lighting, and a carefully curated color palette that promotes tranquility and sophistication.",
     year: "2024",
   },
   {
     id: 3,
-    title: "Contemporary Kitchen",
-    category: "Kitchen Design",
-    mainImage:
-      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&auto=format&fit=crop&q=80",
-    thumbnail:
-      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=200&auto=format&fit=crop&q=80",
+    title: "Kent Valley International School",
+    category: "Commercial Design",
+    mainImage: "/projects/KENT VALLY INTERNATIONAL SCHOOL/BIRD EYE VIEW.jpg",
+    thumbnail: "/projects/KENT VALLY INTERNATIONAL SCHOOL/BIRD EYE VIEW.jpg",
+    images: [
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/BIRD EYE VIEW.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/03.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/04.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/1 (1).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/1 (2).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/1 (3).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/1 (4).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/1 (5).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/1 (6).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/1 (7).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/1 (8).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/2 (1).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/2 (4).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/2 (5).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/2 (6).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/2 (9).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/22 (2).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/3 (1).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/3 (2).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/3 (3).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/3 (4).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/3 (5).jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/4.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/AUDIO VIDEO ROOM 1.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/AUDIO VIDEO ROOM 2.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/cabin 1-2.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/cabin 2-1.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/CABIN1 1.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/CABIN1 2.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/CABIN2 1.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/CABIN2 2.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/CONFERENCE ROOM 1.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/CONFERENCE ROOM 2.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/work station -1.jpg",
+      "/projects/KENT VALLY INTERNATIONAL SCHOOL/work station -2.jpg",
+    ],
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt.",
+      "A comprehensive educational facility design that creates an inspiring learning environment with modern amenities and thoughtful space planning.",
     details:
-      "A functional yet beautiful kitchen space that combines modern appliances with timeless design elements, creating an environment that's perfect for both everyday cooking and entertaining guests.",
+      "A functional yet beautiful educational space that combines modern facilities with timeless design elements, creating an environment that's perfect for both learning and administrative activities.",
     year: "2023",
   },
   {
     id: 4,
-    title: "Cozy Reading Nook",
-    category: "Interior Styling",
-    mainImage:
-      "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800&auto=format&fit=crop&q=80",
-    thumbnail:
-      "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=200&auto=format&fit=crop&q=80",
+    title: "Kishor Gawas Residence",
+    category: "Residential Design",
+    mainImage: "/projects/KISHOR GAWAS/1.jpg",
+    thumbnail: "/projects/KISHOR GAWAS/1.jpg",
+    images: [
+      "/projects/KISHOR GAWAS/1.jpg",
+      "/projects/KISHOR GAWAS/2.jpg",
+      "/projects/KISHOR GAWAS/3.jpg",
+      "/projects/KISHOR GAWAS/4.jpg",
+      "/projects/KISHOR GAWAS/5.jpg",
+    ],
     description:
-      "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.",
+      "A cozy residential project designed to provide the perfect escape from daily life, featuring comfortable living spaces and carefully selected design elements.",
     details:
-      "An intimate reading corner designed to provide the perfect escape from daily life, featuring comfortable seating, optimal lighting, and carefully selected accessories that create a personal sanctuary within the home.",
+      "An intimate home designed to provide the perfect sanctuary for the family, featuring comfortable spaces, optimal lighting, and carefully selected accessories that create a personal haven.",
     year: "2023",
   },
   {
     id: 5,
-    title: "Minimalist Bathroom",
-    category: "Bathroom Design",
-    mainImage:
-      "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&auto=format&fit=crop&q=80",
-    thumbnail:
-      "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=200&auto=format&fit=crop&q=80",
+    title: "Mallika Shah Residence",
+    category: "Interior Design",
+    mainImage: "/projects/MALLIKA SHAH/1 (3).jpg",
+    thumbnail: "/projects/MALLIKA SHAH/1 (3).jpg",
+    images: [
+      "/projects/MALLIKA SHAH/1 (3).jpg",
+      "/projects/MALLIKA SHAH/1 (4).jpg",
+      "/projects/MALLIKA SHAH/1 (5).jpg",
+      "/projects/MALLIKA SHAH/2 (3).jpg",
+      "/projects/MALLIKA SHAH/2 (4).jpg",
+      "/projects/MALLIKA SHAH/2 (5).jpg",
+      "/projects/MALLIKA SHAH/3 (1).jpg",
+      "/projects/MALLIKA SHAH/3 (2).jpg",
+      "/projects/MALLIKA SHAH/4 (2).jpg",
+    ],
     description:
-      "Nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",
+      "A minimalist home design that emphasizes clean lines, natural materials, and a calming atmosphere, transforming daily routines into moments of relaxation.",
     details:
-      "A spa-like bathroom retreat that emphasizes clean lines, natural materials, and a calming atmosphere, transforming daily routines into moments of relaxation and renewal.",
+      "A serene home retreat that emphasizes clean lines, natural materials, and a calming atmosphere, transforming daily routines into moments of relaxation and renewal.",
     year: "2024",
   },
   {
     id: 6,
-    title: "Modern Office Space",
-    category: "Commercial Design",
-    mainImage:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&auto=format&fit=crop&q=80",
-    thumbnail:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=200&auto=format&fit=crop&q=80",
+    title: "Mayur Shah Residence",
+    category: "Residential Design",
+    mainImage: "/projects/MAYUR SHAH/1 (1).jpg",
+    thumbnail: "/projects/MAYUR SHAH/1 (1).jpg",
+    images: [
+      "/projects/MAYUR SHAH/1 (1).jpg",
+      "/projects/MAYUR SHAH/1 (2).jpg",
+      "/projects/MAYUR SHAH/1 (3).jpg",
+      "/projects/MAYUR SHAH/1 (4).jpg",
+      "/projects/MAYUR SHAH/1 (5).jpg",
+      "/projects/MAYUR SHAH/1 (6).jpg",
+      "/projects/MAYUR SHAH/2 (1).jpg",
+      "/projects/MAYUR SHAH/2 (3).jpg",
+      "/projects/MAYUR SHAH/2 (4).jpg",
+      "/projects/MAYUR SHAH/3 (2).jpg",
+      "/projects/MAYUR SHAH/4 (1).jpg",
+      "/projects/MAYUR SHAH/4 (2).jpg",
+      "/projects/MAYUR SHAH/5 (1).jpg",
+      "/projects/MAYUR SHAH/5 (2).jpg",
+      "/projects/MAYUR SHAH/6 (1).jpg",
+      "/projects/MAYUR SHAH/6 (2).jpg",
+      "/projects/MAYUR SHAH/7 (1).jpg",
+      "/projects/MAYUR SHAH/7 (2).jpg",
+      "/projects/MAYUR SHAH/8 (1).jpeg",
+      "/projects/MAYUR SHAH/8 (2).jpeg",
+      "/projects/MAYUR SHAH/8 (3).jpeg",
+    ],
     description:
-      "Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.",
+      "A modern office and residential space design that balances functionality with aesthetic appeal, incorporating ergonomic solutions and inspiring elements.",
     details:
-      "A productive workspace design that balances functionality with aesthetic appeal, incorporating ergonomic solutions and inspiring elements that enhance creativity and focus.",
+      "A productive space design that balances functionality with aesthetic appeal, incorporating ergonomic solutions and inspiring elements that enhance creativity and focus.",
     year: "2023",
   },
   {
     id: 7,
-    title: "Luxury Dining Room",
-    category: "Dining Design",
-    mainImage:
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&auto=format&fit=crop&q=80",
-    thumbnail:
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&auto=format&fit=crop&q=80",
+    title: "Piyush Shah Project",
+    category: "Luxury Design",
+    mainImage: "/projects/PIYUSH SHAH/IMG_6173-HDR-Pano.jpg",
+    thumbnail: "/projects/PIYUSH SHAH/IMG_6173-HDR-Pano.jpg",
+    images: [
+      "/projects/PIYUSH SHAH/IMG_6173-HDR-Pano.jpg",
+      "/projects/PIYUSH SHAH/001.jpg",
+      "/projects/PIYUSH SHAH/005.jpg",
+      "/projects/PIYUSH SHAH/05.jpg",
+      "/projects/PIYUSH SHAH/20220611_193408.jpg",
+      "/projects/PIYUSH SHAH/7.jpg",
+      "/projects/PIYUSH SHAH/IMG_6306-HDR-2.jpg",
+      "/projects/PIYUSH SHAH/IMG_6358-HDR-Pano-3.jpg",
+      "/projects/PIYUSH SHAH/IMG_6377-HDR.jpg",
+    ],
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.",
+      "A luxury design project that combines classic sophistication with modern functionality, creating the perfect atmosphere for memorable experiences.",
     details:
-      "An elegant dining space that combines classic sophistication with modern functionality, creating the perfect atmosphere for memorable gatherings and intimate meals.",
+      "An elegant space that combines classic sophistication with modern functionality, creating the perfect atmosphere for memorable gatherings and intimate moments.",
     year: "2024",
   },
   {
     id: 8,
-    title: "Stylish Walk-in Closet",
-    category: "Storage Design",
-    mainImage:
-      "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800&auto=format&fit=crop&q=80",
-    thumbnail:
-      "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=200&auto=format&fit=crop&q=80",
+    title: "Ramdutt Apartment",
+    category: "Apartment Design",
+    mainImage: "/projects/RAMDUTT APARTMENT/1 (1).jpg",
+    thumbnail: "/projects/RAMDUTT APARTMENT/1 (1).jpg",
+    images: [
+      "/projects/RAMDUTT APARTMENT/1 (1).jpg",
+      "/projects/RAMDUTT APARTMENT/1 (3).jpg",
+      "/projects/RAMDUTT APARTMENT/1 (4).jpg",
+      "/projects/RAMDUTT APARTMENT/1 (5).jpg",
+      "/projects/RAMDUTT APARTMENT/1 (6).jpg",
+      "/projects/RAMDUTT APARTMENT/2 (1).jpg",
+    ],
     description:
-      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.",
+      "A stylish apartment design that maximizes storage while maintaining an elegant aesthetic, featuring custom built-ins and sophisticated lighting design.",
     details:
-      "A luxurious walk-in closet that maximizes storage while maintaining an elegant aesthetic, featuring custom built-ins and sophisticated lighting design.",
+      "A luxurious apartment that maximizes storage while maintaining an elegant aesthetic, featuring custom built-ins and sophisticated lighting design.",
     year: "2023",
   },
   {
     id: 9,
-    title: "Contemporary Terrace",
-    category: "Outdoor Design",
-    mainImage:
-      "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=800&auto=format&fit=crop&q=80",
-    thumbnail:
-      "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=200&auto=format&fit=crop&q=80",
+    title: "Shripal Ishan Project",
+    category: "Contemporary Design",
+    mainImage: "/projects/SHRIPAL ISHAN/1 (1).jpg",
+    thumbnail: "/projects/SHRIPAL ISHAN/1 (1).jpg",
+    images: [
+      "/projects/SHRIPAL ISHAN/1 (1).jpg",
+      "/projects/SHRIPAL ISHAN/1 (12).jpg",
+      "/projects/SHRIPAL ISHAN/1 (14).jpg",
+      "/projects/SHRIPAL ISHAN/1 (4).jpg",
+      "/projects/SHRIPAL ISHAN/1 (5).jpg",
+      "/projects/SHRIPAL ISHAN/1 (7).jpg",
+      "/projects/SHRIPAL ISHAN/1 (9).jpg",
+      "/projects/SHRIPAL ISHAN/2 (1).jpg",
+      "/projects/SHRIPAL ISHAN/2 (2).jpg",
+      "/projects/SHRIPAL ISHAN/2 (4).jpg",
+      "/projects/SHRIPAL ISHAN/2 (5).jpg",
+      "/projects/SHRIPAL ISHAN/2 (6).jpg",
+      "/projects/SHRIPAL ISHAN/2 (7).jpg",
+      "/projects/SHRIPAL ISHAN/3 (4).jpg",
+      "/projects/SHRIPAL ISHAN/4 (2).jpg",
+      "/projects/SHRIPAL ISHAN/5 (2).jpg",
+    ],
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollit anim.",
+      "A contemporary design that seamlessly blends indoor comfort with natural beauty, featuring weather-resistant materials and thoughtful design elements.",
     details:
-      "An outdoor living space that seamlessly blends indoor comfort with natural beauty, featuring weather-resistant materials and thoughtful landscaping design.",
+      "A contemporary space that seamlessly blends indoor comfort with natural beauty, featuring modern materials and thoughtful design elements.",
     year: "2024",
   },
 ];
@@ -152,6 +280,8 @@ const Gallery = () => {
       setSelectedProject(project);
       setIsModalOpen(true);
       setIsAnimating(true);
+      // Prevent body scroll when modal opens
+      document.body.style.overflow = "hidden";
       setTimeout(() => {
         setIsAnimating(false);
       }, 300);
@@ -160,6 +290,8 @@ const Gallery = () => {
       setSelectedProject(project);
       setIsModalOpen(true);
       setIsAnimating(true);
+      // Prevent body scroll when modal opens
+      document.body.style.overflow = "hidden";
       setTimeout(() => {
         setIsAnimating(false);
       }, 300);
@@ -178,6 +310,8 @@ const Gallery = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedProject(null);
+    // Restore body scroll when modal closes
+    document.body.style.overflow = "unset";
     if (viewMode === "grid") {
       setHoveredProject(projects[0]); // Reset to first project in grid mode
     }
@@ -680,28 +814,45 @@ const Gallery = () => {
                       </div>
                     </div>
 
-                    {/* Navigation Thumbnails - Hidden on mobile for better space usage */}
+                    {/* Project Gallery - Hidden on mobile for better space usage */}
                     <div className="hidden md:block border-t border-gray-100 p-4">
                       <h4 className="text-xs font-semibold text-[#a85f31] mb-3 uppercase tracking-wide">
-                        Other Projects
+                        Project Gallery
                       </h4>
-                      <div className="grid grid-cols-3 gap-2">
-                        {projects
-                          .filter((p) => p.id !== selectedProject.id)
-                          .slice(0, 6)
-                          .map((project) => (
-                            <button
-                              key={`modal-nav-${project.id}`}
-                              onClick={() => handleProjectChange(project)}
-                              className="aspect-square overflow-hidden rounded hover:ring-2 hover:ring-[#a85f31] transition-all"
-                            >
-                              <img
-                                src={project.thumbnail}
-                                alt={project.title}
-                                className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-300"
-                              />
-                            </button>
-                          ))}
+                      <div
+                        className="grid grid-cols-3 gap-2 max-h-64 overflow-y-auto no-scrollbar"
+                        onWheel={(e) => {
+                          e.stopPropagation();
+                        }}
+                        onTouchMove={(e) => {
+                          e.stopPropagation();
+                        }}
+                      >
+                        {selectedProject.images.map((image, index) => (
+                          <button
+                            key={`gallery-${index}`}
+                            onClick={() => {
+                              const updatedProject = {
+                                ...selectedProject,
+                                mainImage: image,
+                              };
+                              setSelectedProject(updatedProject);
+                            }}
+                            className={`aspect-square overflow-hidden rounded transition-all ${
+                              selectedProject.mainImage === image
+                                ? "ring-2 ring-[#a85f31] scale-105"
+                                : "hover:ring-2 hover:ring-[#a85f31]/50"
+                            }`}
+                          >
+                            <img
+                              src={image}
+                              alt={`${selectedProject.title} - Image ${
+                                index + 1
+                              }`}
+                              className="w-full h-full object-cover transition-all duration-300"
+                            />
+                          </button>
+                        ))}
                       </div>
                     </div>
                   </div>

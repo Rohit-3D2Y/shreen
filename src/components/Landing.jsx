@@ -32,47 +32,20 @@ const Landing = () => {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/30 z-10" />
 
-        {/* Animated Hero Text */}
+        {/* Static Centered Text */}
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-white px-4 space-y-6">
-          <motion.p 
-            className="text-base md:text-xl uppercase font-semibold"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-          >
+          <p className="text-base md:text-xl uppercase font-semibold">
             Futuristic Elegance
-          </motion.p>
-          
-          <motion.h1 
-            className="text-5xl md:text-[10rem] brico -tracking-wider"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            whileHover={{ 
-              scale: 1.02, 
-              textShadow: "0px 0px 8px rgba(255,255,255,0.8)",
-              transition: { duration: 0.3 }
-            }}
-          >
+          </p>
+          <h1 className="text-5xl md:text-[10rem] brico -tracking-wider">
             Shreen Designs
-          </motion.h1>
-          <motion.a
+          </h1>
+          <a
             href={whatsappURL}
-            className="px-8 py-4 rounded-2xl text-sm font-medium text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-md hover:bg-white/20 transition-all duration-200"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            whileHover={{ 
-              scale: 1.05,
-              backgroundColor: "rgba(255, 255, 255, 0.25)",
-              boxShadow: "0 8px 32px rgba(255, 255, 255, 0.1)",
-              transition: { duration: 0.2 }
-            }}
-            whileTap={{ scale: 0.98 }}
+            className="px-6 py-3 rounded-2xl text-sm font-medium text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-md hover:bg-white/20 transition-all duration-200"
           >
             Let's Create Together →
-          </motion.a>
+          </a>
         </div>
       </div>
 
