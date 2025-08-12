@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Info, Sparkles } from "lucide-react";
 import Footer from "./Footer";
 
 // Sample project data with interior design images
@@ -262,597 +262,265 @@ const projects = [
 ];
 
 const Gallery = () => {
+  // Simpler state: currently viewed project and image index
   const [selectedProject, setSelectedProject] = useState(null);
-  const [hoveredProject, setHoveredProject] = useState(projects[0]); // Set first project as default
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [viewMode, setViewMode] = useState("grid"); // 'grid' or 'slider'
 
-  const handleProjectHover = (project) => {
-    if (!isModalOpen && viewMode === "grid") {
-      setHoveredProject(project);
-    }
-  };
-
-  const handleProjectClick = (project) => {
-    if (viewMode === "slider") {
-      // In slider mode, clicking opens modal directly
-      setSelectedProject(project);
-      setIsModalOpen(true);
-      setIsAnimating(true);
-      // Prevent body scroll when modal opens
-      document.body.style.overflow = "hidden";
-      setTimeout(() => {
-        setIsAnimating(false);
-      }, 300);
-    } else {
-      // In grid mode, clicking opens modal
-      setSelectedProject(project);
-      setIsModalOpen(true);
-      setIsAnimating(true);
-      // Prevent body scroll when modal opens
-      document.body.style.overflow = "hidden";
-      setTimeout(() => {
-        setIsAnimating(false);
-      }, 300);
-    }
-  };
-
-  const toggleViewMode = (mode) => {
-    setViewMode(mode);
-    if (mode === "slider") {
-      setHoveredProject(null); // Hide preview box in slider mode
-    } else {
-      setHoveredProject(projects[0]); // Show first project in grid mode
-    }
+  const openProject = (project, index = 0) => {
+    setSelectedProject(project);
+    setActiveImageIndex(index);
+    setIsModalOpen(true);
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedProject(null);
-    // Restore body scroll when modal closes
+    setActiveImageIndex(0);
     document.body.style.overflow = "unset";
-    if (viewMode === "grid") {
-      setHoveredProject(projects[0]); // Reset to first project in grid mode
-    }
   };
 
-  const handleProjectChange = (project) => {
-    if (project.id === selectedProject?.id || isAnimating) return;
-
-    setIsAnimating(true);
-    setTimeout(() => {
-      setSelectedProject(project);
-      setIsAnimating(false);
-    }, 300);
+  const navigateImage = (dir) => {
+    if (!selectedProject) return;
+    const total = selectedProject.images.length;
+    setActiveImageIndex((prev) =>
+      dir === "prev" ? (prev - 1 + total) % total : (prev + 1) % total
+    );
   };
 
-  const getCurrentIndex = () =>
-    selectedProject
-      ? projects.findIndex((p) => p.id === selectedProject.id)
-      : 0;
-
-  const navigateProject = (direction) => {
-    const currentIndex = getCurrentIndex();
-    let nextIndex;
-
-    if (direction === "prev") {
-      nextIndex = currentIndex > 0 ? currentIndex - 1 : projects.length - 1;
-    } else {
-      nextIndex = currentIndex < projects.length - 1 ? currentIndex + 1 : 0;
-    }
-
-    handleProjectChange(projects[nextIndex]);
-  };
+  // Keyboard navigation for modal
+  useEffect(() => {
+    const handler = (e) => {
+      if (!isModalOpen) return;
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowLeft") navigateImage("prev");
+      if (e.key === "ArrowRight") navigateImage("next");
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [isModalOpen, selectedProject]);
 
   return (
     <>
       <style>{`
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
+
       <div className="min-h-screen bg-[#f5f2ef]">
         {/* Header */}
-        <div className="pt-20 pb-8">
+        <header className="pt-20 pb-8">
           <div className="px-6">
-            <div className="flex items-center justify-center mb-8">
-              <div className="text-center">
-                <h1 className="text-7xl font-bold text-[#a85f31] brico tracking-wide">
-                  Our Projects
-                </h1>
-                <p className="text-sm text-gray-600 mt-2">
-                  Interior Design Portfolio
-                </p>
-              </div>
+            <div className="text-center">
+              <h1 className="text-4xl md:text-6xl font-bold text-[#a85f31] brico tracking-wide">
+                Our Projects
+              </h1>
+              <p className="text-sm text-gray-600 mt-2">
+                Interior Design Portfolio
+              </p>
             </div>
           </div>
-        </div>
+        </header>
 
-        {/* Main Gallery Layout */}
-        <div className="px-6">
-          <div
-            className={`grid grid-cols-1 gap-8 max-w-7xl mx-auto ${
-              viewMode === "grid" ? "lg:grid-cols-3" : "lg:grid-cols-1"
-            } transition-all duration-500`}
-          >
-            {/* Left Side - Numbered Project Grid/Slider */}
-            <div
-              className={`${
-                viewMode === "grid" ? "lg:col-span-2" : "lg:col-span-1"
-              } transition-all duration-500`}
+        {/* Simple stack of project cards */}
+        <main className="px-6 max-w-6xl mx-auto grid gap-8 pb-16">
+          {projects.map((project, idx) => (
+            <motion.article
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
             >
-              <AnimatePresence mode="wait">
-                {viewMode === "grid" ? (
-                  <motion.div
-                    key="grid-view"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="grid grid-cols-3 gap-4 mb-8"
-                  >
-                    {projects.map((project, index) => (
-                      <motion.button
-                        key={project.id}
-                        onClick={() => handleProjectClick(project)}
-                        onMouseEnter={() => handleProjectHover(project)}
-                        onMouseLeave={() => setHoveredProject(projects[0])}
-                        className={`relative group transition-all duration-300 ${
-                          hoveredProject?.id === project.id
-                            ? "ring-2 ring-[#a85f31] scale-105"
-                            : ""
-                        }`}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                      >
-                        <div className="aspect-[4/3] relative overflow-hidden bg-gray-200">
-                          <img
-                            src={project.thumbnail}
-                            alt={project.title}
-                            className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500"
-                          />
-
-                          {/* Number overlay */}
-                          <div className="absolute top-2 left-2">
-                            <span className="bg-white text-black px-2 py-1 text-xs font-bold rounded">
-                              {index + 1}
-                            </span>
-                          </div>
-
-                          {/* Hover overlay with project info */}
-                          <div
-                            className={`absolute inset-0 transition-all duration-300 ${
-                              hoveredProject?.id === project.id
-                                ? "bg-black/60"
-                                : "bg-black/0 group-hover:bg-black/30"
-                            }`}
-                          >
-                            {hoveredProject?.id === project.id && (
-                              <div className="absolute bottom-2 left-2 right-2">
-                                <h4 className="text-white text-xs font-bold mb-1">
-                                  {project.title}
-                                </h4>
-                                <p className="text-white/80 text-xs">
-                                  {project.category}
-                                </p>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </motion.button>
-                    ))}
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="slider-view"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="mb-8"
-                  >
-                    <div className="overflow-hidden">
-                      <div
-                        className="flex gap-6 pb-4 overflow-x-auto no-scrollbar"
-                        style={{
-                          scrollbarWidth: "none",
-                          msOverflowStyle: "none",
-                        }}
-                      >
-                        {projects.map((project, index) => (
-                          <motion.button
-                            key={project.id}
-                            onClick={() => handleProjectClick(project)}
-                            className="relative group flex-shrink-0 w-80 transition-all duration-300"
-                            whileHover={{ y: -5, scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            initial={{
-                              opacity: 0,
-                              x: -50,
-                              scale: 0.9,
-                            }}
-                            animate={{
-                              opacity: 1,
-                              x: 0,
-                              scale: 1,
-                            }}
-                            transition={{
-                              duration: 0.5,
-                              delay: index * 0.1,
-                              ease: "easeOut",
-                            }}
-                          >
-                            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                              <div className="aspect-[4/3] relative overflow-hidden">
-                                <img
-                                  src={project.mainImage}
-                                  alt={project.title}
-                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                />
-
-                                {/* Gradient overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                                {/* Project number badge */}
-                                <div className="absolute top-4 left-4">
-                                  <span className="bg-white/90 backdrop-blur-sm text-black px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                                    {index + 1}
-                                  </span>
-                                </div>
-
-                                {/* Category badge */}
-                                <div className="absolute top-4 right-4">
-                                  <span className="bg-[#a85f31]/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">
-                                    {project.year}
-                                  </span>
-                                </div>
-
-                                {/* Hover info */}
-                                <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                  <h4 className="text-white font-bold text-lg mb-1 brico">
-                                    {project.title}
-                                  </h4>
-                                  <p className="text-white/80 text-sm uppercase tracking-wide">
-                                    {project.category}
-                                  </p>
-                                </div>
-                              </div>
-
-                              {/* Card content */}
-                              <div className="p-4">
-                                <h3 className="font-bold text-lg text-gray-800 mb-2 brico">
-                                  {project.title}
-                                </h3>
-                                <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                                  {project.description.substring(0, 100)}...
-                                </p>
-                                <div className="flex items-center justify-between">
-                                  <span className="text-xs text-[#a85f31] font-medium uppercase tracking-wide">
-                                    {project.category}
-                                  </span>
-                                  <span className="text-xs text-gray-500">
-                                    {project.year}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </motion.button>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Grid/Slider Toggle */}
-              <div className="flex justify-center mb-12">
-                <div className="bg-gray-200 rounded-full p-1 flex shadow-lg">
-                  <button
-                    onClick={() => toggleViewMode("grid")}
-                    className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                      viewMode === "grid"
-                        ? "bg-[#a85f31] text-white shadow-md"
-                        : "text-gray-600 hover:bg-[#a85f31]/10 hover:text-[#a85f31]"
-                    }`}
-                  >
-                    Grid
-                  </button>
-                  <button
-                    onClick={() => toggleViewMode("slider")}
-                    className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                      viewMode === "slider"
-                        ? "bg-[#a85f31] text-white shadow-md"
-                        : "text-gray-600 hover:bg-[#a85f31]/10 hover:text-[#a85f31]"
-                    }`}
-                  >
-                    Slider
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Side - Project Preview Box (Only in Grid Mode) */}
-            {viewMode === "grid" && (
-              <div className="lg:col-span-1">
-                <div className="sticky top-24">
-                  <div className="bg-white rounded-xl overflow-hidden shadow-2xl border border-gray-100">
-                    <div className="p-0">
-                      <AnimatePresence mode="wait">
-                        {hoveredProject && (
-                          <motion.div
-                            key={hoveredProject.id}
-                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                            transition={{
-                              duration: 0.4,
-                              ease: [0.25, 0.46, 0.45, 0.94],
-                            }}
-                            className="relative"
-                          >
-                            {/* Image Container */}
-                            <div className="relative aspect-[4/3] overflow-hidden">
-                              <img
-                                src={hoveredProject.mainImage}
-                                alt={hoveredProject.title}
-                                className="w-full h-full object-cover"
-                              />
-
-                              {/* Gradient overlay */}
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-
-                              {/* Project number badge */}
-                              <div className="absolute top-4 left-4">
-                                <div className="bg-white/90 backdrop-blur-sm text-black px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                                  {hoveredProject.id
-                                    .toString()
-                                    .padStart(2, "0")}
-                                </div>
-                              </div>
-
-                              {/* Category badge */}
-                              <div className="absolute top-4 right-4">
-                                <div className="bg-[#a85f31]/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">
-                                  {hoveredProject.year}
-                                </div>
-                              </div>
-
-                              {/* Bottom info overlay */}
-                              <div className="absolute bottom-4 left-4 right-4">
-                                <div className="text-white">
-                                  <p className="text-xs uppercase tracking-wider font-medium opacity-80 mb-1">
-                                    {hoveredProject.category}
-                                  </p>
-                                  <h4 className="font-bold text-lg leading-tight brico">
-                                    {hoveredProject.title}
-                                  </h4>
-                                </div>
-                              </div>
-                            </div>
-
-                            {/* Content Section */}
-                            <div className="p-6 bg-white">
-                              <div className="space-y-4">
-                                {/* Description */}
-                                <div>
-                                  <p className="text-gray-600 text-sm leading-relaxed">
-                                    {hoveredProject.description.substring(
-                                      0,
-                                      120
-                                    )}
-                                    ...
-                                  </p>
-                                </div>
-
-                                {/* Action Button */}
-                                <button
-                                  onClick={() =>
-                                    handleProjectClick(hoveredProject)
-                                  }
-                                  className="w-full bg-[#a85f31] hover:bg-[#8b4a2a] text-white py-3 px-6 rounded-lg font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl"
-                                >
-                                  View Full Project
-                                </button>
-
-                                {/* Project Meta */}
-                                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                                  <span className="text-xs text-gray-400 uppercase tracking-wide">
-                                    Project Details
-                                  </span>
-                                  <div className="flex items-center gap-2">
-                                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                                    <span className="text-xs text-gray-500">
-                                      Completed {hoveredProject.year}
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+              {/* Cover */}
+              <button
+                onClick={() => openProject(project, 0)}
+                className="block w-full text-left"
+              >
+                <div className="relative aspect-[16/9]">
+                  <img
+                    src={project.mainImage}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <p className="text-white/80 text-xs uppercase tracking-wide">
+                      {project.category}
+                    </p>
+                    <h2 className="text-white text-2xl font-bold brico leading-tight">
+                      {project.title}
+                    </h2>
+                    <div className="flex items-center gap-2 text-white/80 text-xs mt-1">
+                      <span>Completed {project.year}</span>
+                      <span>•</span>
+                      <span>{project.images.length} Photos</span>
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
-          </div>
-        </div>
+              </button>
 
-        {/* Modal for Project Details */}
+              {/* Content */}
+              <div className="p-5">
+                <p className="text-gray-700 leading-relaxed text-sm md:text-base">
+                  {project.description}
+                </p>
+                <div className="flex items-center justify-between mt-4">
+                  <span className="text-xs text-[#a85f31] uppercase tracking-wide">
+                    {String(project.id).padStart(2, "0")} / {projects.length}
+                  </span>
+                  <button
+                    onClick={() => openProject(project, 0)}
+                    className="px-4 py-2 rounded-lg bg-[#a85f31] text-white text-sm hover:bg-[#8b4a2a] transition-colors"
+                  >
+                    View Photos
+                  </button>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </main>
+
+        {/* Lightbox Modal */}
         <AnimatePresence>
           {isModalOpen && selectedProject && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
+              className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm"
               onClick={closeModal}
             >
               <motion.div
-                initial={{ scale: 0.8, opacity: 0, x: "-50%", y: "-50%" }}
-                animate={{ scale: 1, opacity: 1, x: "-50%", y: "-50%" }}
-                exit={{ scale: 0.8, opacity: 0, x: "-50%", y: "-50%" }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="fixed top-1/2 left-1/2 w-[95vw] h-[90vh] md:w-[90vw] md:h-[80vh] max-w-6xl bg-white rounded-2xl shadow-2xl overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.25 }}
+                className="absolute inset-0 flex flex-col"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="h-full flex flex-col md:flex-row">
-                  {/* Main Image - Center */}
-                  <div className="flex-1 relative h-1/2 md:h-full">
-                    <img
-                      src={selectedProject.mainImage}
-                      alt={selectedProject.title}
-                      className="w-full h-full object-cover"
-                    />
+                {/* Top bar */}
+                <div className="flex items-center justify-between px-4 py-3 md:px-6 md:py-4">
+                  <div>
+                    <p className="text-white/70 text-xs uppercase tracking-wide">
+                      {selectedProject.category}
+                    </p>
+                    <h3 className="text-white text-lg md:text-2xl font-semibold brico">
+                      {selectedProject.title}
+                    </h3>
+                    <p className="text-white/70 text-xs mt-0.5">
+                      {selectedProject.year}
+                    </p>
+                  </div>
+                  <button
+                    aria-label="Close"
+                    onClick={closeModal}
+                    className="bg-white/90 hover:bg-white text-black p-2 rounded-full"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
 
-                    {/* Close button */}
-                    <button
-                      onClick={closeModal}
-                      className="absolute top-2 right-2 md:top-4 md:right-4 bg-white/90 hover:bg-white text-black p-2 rounded-full transition-all z-10"
-                    >
-                      <X size={16} />
-                    </button>
+                {/* Image viewer */}
+                <div className="relative flex-1 min-h-0">
+                  <img
+                    src={selectedProject.images[activeImageIndex]}
+                    alt={`${selectedProject.title} - ${activeImageIndex + 1}`}
+                    className="absolute inset-0 w-full h-full object-contain md:object-cover"
+                  />
 
-                    {/* Navigation buttons - Hidden on mobile, visible on desktop */}
+                  {/* Prev/Next */}
+                  <div className="hidden md:flex absolute inset-y-0 left-0 right-0 items-center justify-between px-4">
                     <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        navigateProject("prev");
-                      }}
-                      className="hidden md:block absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-black px-3 py-2 rounded-full transition-all"
+                      onClick={() => navigateImage("prev")}
+                      className="bg-white/90 hover:bg-white text-black p-2 rounded-full shadow"
                     >
-                      <ChevronLeft size={20} />
+                      <ChevronLeft size={22} />
                     </button>
                     <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        navigateProject("next");
-                      }}
-                      className="hidden md:block absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-black px-3 py-2 rounded-full transition-all"
+                      onClick={() => navigateImage("next")}
+                      className="bg-white/90 hover:bg-white text-black p-2 rounded-full shadow"
                     >
-                      <ChevronRight size={20} />
+                      <ChevronRight size={22} />
                     </button>
-
-                    {/* Project info overlay - Adjusted for mobile */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 md:p-6">
-                      <span className="text-xs text-white/80 font-medium uppercase tracking-wider block mb-1 md:mb-2">
-                        {selectedProject.category}
-                      </span>
-                      <h2 className="text-lg md:text-2xl font-bold text-white mb-1 md:mb-2 brico">
-                        {selectedProject.title}
-                      </h2>
-                      <div className="flex items-center gap-2 md:gap-4 text-xs md:text-sm text-white/80">
-                        <span>
-                          Project #
-                          {selectedProject.id.toString().padStart(2, "0")}
-                        </span>
-                        <span>•</span>
-                        <span>Completed {selectedProject.year}</span>
-                      </div>
-                    </div>
                   </div>
 
-                  {/* Right Side - Project Details & Navigation */}
-                  <div className="w-full md:w-80 bg-white flex flex-col h-1/2 md:h-full">
-                    {/* Mobile Navigation Buttons */}
-                    <div className="flex md:hidden justify-between items-center p-4 border-b border-gray-100">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          navigateProject("prev");
-                        }}
-                        className="bg-gray-100 hover:bg-gray-200 text-black p-2 rounded-full transition-all"
-                      >
-                        <ChevronLeft size={18} />
-                      </button>
-                      <span className="text-sm text-gray-600 font-medium">
-                        {projects.findIndex(
-                          (p) => p.id === selectedProject.id
-                        ) + 1}{" "}
-                        of {projects.length}
-                      </span>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          navigateProject("next");
-                        }}
-                        className="bg-gray-100 hover:bg-gray-200 text-black p-2 rounded-full transition-all"
-                      >
-                        <ChevronRight size={18} />
-                      </button>
+                  {/* Mobile Prev/Next */}
+                  <div className="md:hidden absolute bottom-0 left-0 right-0 flex items-center justify-between px-4">
+                    <button
+                      onClick={() => navigateImage("prev")}
+                      className="bg-white/90 hover:bg-white text-black p-2 rounded-full shadow"
+                    >
+                      <ChevronLeft size={18} />
+                    </button>
+                    <span className="text-white text-xs px-2 py-1 rounded-full bg-black/60">
+                      {activeImageIndex + 1} / {selectedProject.images.length}
+                    </span>
+                    <button
+                      onClick={() => navigateImage("next")}
+                      className="bg-white/90 hover:bg-white text-black p-2 rounded-full shadow"
+                    >
+                      <ChevronRight size={18} />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Thumbnails & Info */}
+                <div className="bg-black/40 border-t border-white/10">
+                  <div className="px-4 md:px-6 py-3 md:py-4">
+                    <div className="flex gap-2 overflow-x-auto no-scrollbar">
+                      {selectedProject.images.map((img, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setActiveImageIndex(i)}
+                          className={`relative w-20 h-20 md:w-24 md:h-20 flex-shrink-0 rounded overflow-hidden border ${
+                            i === activeImageIndex
+                              ? "border-[#a85f31] ring-2 ring-[#a85f31]/40"
+                              : "border-white/20 hover:border-white/40"
+                          }`}
+                        >
+                          <img
+                            src={img}
+                            alt={`${selectedProject.title} thumb ${i + 1}`}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        </button>
+                      ))}
                     </div>
 
-                    {/* Project Details */}
-                    <div className="flex-1 p-4 md:p-6 overflow-y-auto">
-                      <div className="space-y-4 md:space-y-6">
-                        <div>
-                          <h3 className="text-sm font-semibold text-[#a85f31] mb-2 md:mb-3 uppercase tracking-wide">
-                            Description
-                          </h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">
-                            {selectedProject.description}
-                          </p>
+                    <div className="mt-4 grid gap-3 md:grid-cols-2">
+                      {/* Overview */}
+                      <div className="bg-white/5 rounded-lg p-4 border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="p-1.5 rounded-md bg-[#a85f31]/20 text-[#eaddd1]">
+                            <Info size={14} />
+                          </div>
+                          <h4 className="text-white/95 text-sm font-semibold tracking-wide">
+                            Overview
+                          </h4>
                         </div>
-
-                        <div>
-                          <h3 className="text-sm font-semibold text-[#a85f31] mb-2 md:mb-3 uppercase tracking-wide">
-                            Design Details
-                          </h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">
-                            {selectedProject.details}
-                          </p>
-                        </div>
+                        <p className="text-white/85 text-sm md:text-base leading-relaxed">
+                          {selectedProject.description}
+                        </p>
                       </div>
-                    </div>
 
-                    {/* Project Gallery - Hidden on mobile for better space usage */}
-                    <div className="hidden md:block border-t border-gray-100 p-4">
-                      <h4 className="text-xs font-semibold text-[#a85f31] mb-3 uppercase tracking-wide">
-                        Project Gallery
-                      </h4>
-                      <div
-                        className="grid grid-cols-3 gap-2 max-h-64 overflow-y-auto no-scrollbar"
-                        onWheel={(e) => {
-                          e.stopPropagation();
-                        }}
-                        onTouchMove={(e) => {
-                          e.stopPropagation();
-                        }}
-                      >
-                        {selectedProject.images.map((image, index) => (
-                          <button
-                            key={`gallery-${index}`}
-                            onClick={() => {
-                              const updatedProject = {
-                                ...selectedProject,
-                                mainImage: image,
-                              };
-                              setSelectedProject(updatedProject);
-                            }}
-                            className={`aspect-square overflow-hidden rounded transition-all ${
-                              selectedProject.mainImage === image
-                                ? "ring-2 ring-[#a85f31] scale-105"
-                                : "hover:ring-2 hover:ring-[#a85f31]/50"
-                            }`}
-                          >
-                            <img
-                              src={image}
-                              alt={`${selectedProject.title} - Image ${
-                                index + 1
-                              }`}
-                              className="w-full h-full object-cover transition-all duration-300"
-                            />
-                          </button>
-                        ))}
+                      {/* Design Details */}
+                      <div className="bg-white/5 rounded-lg p-4 border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="p-1.5 rounded-md bg-[#a85f31]/20 text-[#eaddd1]">
+                            <Sparkles size={14} />
+                          </div>
+                          <h4 className="text-white/95 text-sm font-semibold tracking-wide">
+                            Design Details
+                          </h4>
+                        </div>
+                        <p className="text-white/80 text-sm md:text-base leading-relaxed">
+                          {selectedProject.details}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -862,10 +530,6 @@ const Gallery = () => {
           )}
         </AnimatePresence>
 
-        {/* Bottom Attribution */}
-        {/* <div className="mt-20 mb-12 text-center">
-          <p className="text-xs text-gray-400">© 2025 Shreen Interiors</p>
-        </div> */}
         <Footer />
       </div>
     </>
