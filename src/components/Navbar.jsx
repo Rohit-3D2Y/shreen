@@ -28,9 +28,14 @@ const Navbar = () => {
         {/* <video className="w-44 h-10" loop muted autoPlay >
           <source src="/logo.gif" type="video/mp4"/>
         </video> */}
-        <img src="/logo.gif" alt="GIF" width="80" height="20"></img>
+        <a href="/">
+          <img src="/logo.gif" alt="GIF" width="80" height="20"></img>
+        </a>
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-10 items-center">
+          <a href="/" className="hover:text-yellow-500">
+            Home
+          </a>
           <a href="/features" className="hover:text-yellow-500">
             Features
           </a>
