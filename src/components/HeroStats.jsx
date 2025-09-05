@@ -15,7 +15,7 @@ const HeroStats = () => {
   // Counter animation effect - only when in view
   useEffect(() => {
     if (isInView) {
-      const targets = { projects: 50, years: 8, customers: 150 };
+      const targets = { projects: 50, years: 14, customers: 150 };
       const duration = 2000; // 2 seconds
       const steps = 60;
       const stepTime = duration / steps;
@@ -169,7 +169,7 @@ const HeroStats = () => {
                   transition: { duration: 0.2 },
                 }}
               >
-                with more than 8+ years of experience, our team works
+                with more than 14+ years of experience, our team works
                 continuously so you get desired results.
               </motion.p>
             </div>
