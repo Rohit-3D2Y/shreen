@@ -419,7 +419,7 @@ function Service2() {
             rippleColor="rgba(255, 255, 255, 0.4)"
           >
             <motion.a
-              href="https://wa.me/919876543210?text=Hi, I would like to discuss my project requirements with you."
+              href="https://wa.me/918082466624?text=Hi, I would like to discuss my project requirements with you."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-[#a85f31] text-white text-lg px-8 py-4 rounded-full hover:bg-[#7f5539] transition-all duration-300 shadow-lg brico"

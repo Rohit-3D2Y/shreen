@@ -35,19 +35,7 @@ const Footer = () => {
             functionality. Our team of design experts transforms your vision
             into stunning reality.
           </p>
-          <form className="flex items-center border border-[#b08968] rounded-lg overflow-hidden w-full max-w-sm bg-white">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="p-3 w-full text-gray-700 outline-none"
-            />
-            <button
-              type="submit"
-              className="bg-[#b08968] text-white px-3 hover:bg-[#9c6644] transition rounded-lg mr-2"
-            >
-              Subscribe
-            </button>
-          </form>
+          
         </div>
 
         {/* Explore Section */}
@@ -87,35 +75,32 @@ const Footer = () => {
           <h3 className="text-2xl font-semibold text-[#9c6644] mb-4">
             Contact
           </h3>
-          <p className="text-md">Shreen Interior Studio</p>
-          <p className="text-md">123 Design Lane, Elegant City, India</p>
+          <p className="text-md">Shreen Designs</p>
+          <p className="text-md">Mumbai, India</p>
           <p className="text-md mt-2">
             Email:{" "}
             <span className="text-[#7f5539] font-semibold">
-              info@shreeninterior.com
+              info@shreen.in
             </span>
           </p>
-          <p className="text-md">Phone: +91 98765 43210</p>
+          <p className="text-md">Phone: +91 80824 66624</p>
 
           <div className="flex space-x-4 mt-6">
             <a
-              href="#"
+              href="https://www.facebook.com/Shreen.designs/"
+              target="_main"
               className="text-[#9c6644] hover:text-[#ca6702] transition"
             >
               <FaFacebookF className="w-5 h-5" />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/shreen.designs/"
+              target="_main"
               className="text-[#9c6644] hover:text-[#ca6702] transition"
             >
               <FaInstagram className="w-5 h-5" />
             </a>
-            <a
-              href="#"
-              className="text-[#9c6644] hover:text-[#ca6702] transition"
-            >
-              <FaTwitter className="w-5 h-5" />
-            </a>
+         
           </div>
         </div>
       </footer>

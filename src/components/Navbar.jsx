@@ -17,7 +17,7 @@ const Navbar = () => {
   }, [isOpen]);
 
   // Your WhatsApp number here in international format (e.g., 91 for India)
-  const whatsappURL = `https://wa.me/919876543210?text=Hi,%20I%20want%20to%20know%20more%20about%20your%20work`;
+  const whatsappURL = `https://wa.me/918082466624?text=Hi,%20I%20want%20to%20know%20more%20about%20your%20work`;
 
   return (
     <nav className="w-full bg-[#eae5df] shadow-md z-50 brico -tracking-wider sticky top-0">
@@ -36,18 +36,20 @@ const Navbar = () => {
           <a href="/" className="hover:text-yellow-500">
             Home
           </a>
-          <a href="/features" className="hover:text-yellow-500">
-            Features
-          </a>
-          <a href="/gallery" className="hover:text-yellow-500">
-            Gallery
-          </a>
-          <a href="/contact" className="hover:text-yellow-500">
-            Contact Us
-          </a>
           <a href="/product" className="hover:text-yellow-500">
             Products
           </a>
+            <a href="/gallery" className="hover:text-yellow-500">
+            Gallery
+          </a>
+          <a href="/features" className="hover:text-yellow-500">
+            Features
+          </a>
+        
+          <a href="/contact" className="hover:text-yellow-500">
+            Contact Us
+          </a>
+          
           <a
             href={whatsappURL}
             target="_blank"
@@ -72,18 +74,23 @@ const Navbar = () => {
           ref={menuRef}
           className="w-full bg-white flex flex-col items-center gap-4 py-6 text-black md:hidden shadow-md"
         >
-          <a href="/features" className="hover:text-yellow-500">
-            Features
-          </a>
-          <a href="/gallery" className="hover:text-yellow-500">
-            Gallery
-          </a>
-          <a href="/contact" className="hover:text-yellow-500">
-            Contact Us
+            <a href="/" className="hover:text-yellow-500">
+            Home
           </a>
           <Link to="/product" className="hover:text-yellow-500">
             Products
           </Link>
+           <a href="/gallery" className="hover:text-yellow-500">
+            Gallery
+          </a>
+          <a href="/features" className="hover:text-yellow-500">
+            Features
+          </a>
+         
+          <a href="/contact" className="hover:text-yellow-500">
+            Contact Us
+          </a>
+          
           <a
             href={whatsappURL}
             target="_blank"

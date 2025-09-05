@@ -62,7 +62,7 @@ const productData = {
           "A stylish chaise lounge with a sleek profile and soft upholstery — perfect for reading nooks or as an accent piece.",
       },
     ],
-    whatsappNumber: "919999999999",
+    whatsappNumber: "918082466624",
   },
 
   chairs: {
@@ -115,7 +115,7 @@ const productData = {
           "A timeless leather armchair with deep seating and classic design — perfect for reading nooks or as a statement piece in any room.",
       },
     ],
-    whatsappNumber: "919999999999",
+    whatsappNumber: "918082466624",
   },
 
   diningtables: {
@@ -168,7 +168,7 @@ const productData = {
           "A modern round table with a sleek design and sturdy base — perfect for casual dining or coffee breaks.",
       },
     ],
-    whatsappNumber: "919999999999",
+    whatsappNumber: "918082466624",
   },
 
   consoletables: {
@@ -221,7 +221,7 @@ const productData = {
           "A blend of metal and wood with an urban edge — designed for modern lofts and contemporary spaces.",
       },
     ],
-    whatsappNumber: "919999999999",
+    whatsappNumber: "918082466624",
   },
 
   wardrobes: {
@@ -274,7 +274,7 @@ const productData = {
           "A sleek Nordic-inspired wardrobe with a blend of wood and metal accents — designed for modern minimalists who appreciate simplicity and functionality.",
       },
     ],
-    whatsappNumber: "919999999999",
+    whatsappNumber: "918082466624",
   },
 
   tvunits: {
@@ -326,7 +326,7 @@ const productData = {
           "This classic wooden TV unit features intricate carvings and a rich finish, adding elegance to your living room. ",
       },
     ],
-    whatsappNumber: "919999999999",
+    whatsappNumber: "918082466624",
   },
 
   lights: {
@@ -378,7 +378,7 @@ const productData = {
           "Reflective surfaces and soft lighting create a serene atmosphere — ideal for yoga studios, wellness centers, or peaceful retreats.",
       },
     ],
-    whatsappNumber: "919999999999",
+    whatsappNumber: "918082466624",
   },
 
   decorelements: {
@@ -430,7 +430,7 @@ const productData = {
           "A serene vanity corner with soft lighting, a round mirror, and delicate decor — perfect for creating a peaceful and stylish personal space.",
       },
     ],
-    whatsappNumber: "919999999999",
+    whatsappNumber: "918082466624",
   },
 };
 

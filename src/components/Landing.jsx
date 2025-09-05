@@ -12,7 +12,7 @@ const Landing = () => {
   const scale = useTransform(scrollY, [0, 300], [1, 1.1]);
 
   // Your WhatsApp number here in international format (e.g., 91 for India)
-  const whatsappURL = `https://wa.me/919876543210?text=Hi,%20I%20want%20to%20know%20more%20about%20your%20work`;
+  const whatsappURL = `https://wa.me/918082466624?text=Hi,%20I%20want%20to%20know%20more%20about%20your%20work`;
 
   return (
     <>

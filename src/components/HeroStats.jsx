@@ -116,7 +116,7 @@ const HeroStats = () => {
                       transition: { duration: 0.2 },
                     }}
                   >
-                    We completed more than 40+ projects with seamless experience
+                    We completed more than 50+ projects with seamless experience
                     and fulfilled needs.
                   </motion.p>
                 </div>
@@ -169,7 +169,7 @@ const HeroStats = () => {
                   transition: { duration: 0.2 },
                 }}
               >
-                with more than 14+ years of experience, our team works
+                with more than 8+ years of experience, our team works
                 continuously so you get desired results.
               </motion.p>
             </div>
