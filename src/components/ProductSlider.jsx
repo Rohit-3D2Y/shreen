@@ -8,36 +8,36 @@ const products = [
   {
     title: "Sofa",
     image:
-      "https://craftsmill.in/cdn/shop/files/sofas-accent-chairs-cider-orange-soft-velvet-touch-fabric-emily-flared-arm-2-seater-sofa-60-46567514931491.jpg?v=1725047510",
+      "/sofachange.jpeg",
   },
   {
     title: "Chairs",
     image:
-      "https://magnoliahome.co.in/wp-content/uploads/2021/08/Jasper-Arm-Chair-1.1-1.jpg",
+      "/chairchange.jpeg",
   },
   {
     title: "Dinning Table",
-    image: "https://m.media-amazon.com/images/I/91H82-mQZLL.jpg",
-  },
+ image:
+      "/diningc.jpeg",  },
   {
     title: "Console Tables",
     image:
-      "https://images.woodenstreet.de/image/cache/data/console-table/erin-console-table/walnut-finish/new-logo/1-810x702.jpg",
+      "/consolec.jpeg",
   },
   {
     title: "Wardrobes",
     image:
-      "https://images.woodenstreet.de/image/cache/data/wardrobes-mdf/zyra-4-door-wardrobe-without-mirror-gothic-grey-classic-oak-finish/new-logo/1-810x702.jpg",
+      "/wardrobec.jpeg",
   },
   {
     title: "Tv Units",
-    image:
-      "https://5.imimg.com/data5/SELLER/Default/2024/7/436466374/SY/VR/OX/199213945/43-inches-plywood-tv-unit.jpg",
+   image:
+      "/tvc.jpeg",
   },
   {
     title: "Lights",
     image:
-      "https://media.istockphoto.com/id/1300384615/photo/string-light-bulbs-at-sunset.jpg?s=612x612&w=0&k=20&c=N695nAFz9YSNxynM3auPznfA3E6wXc8D6P60bN1MaEk=",
+      "/lightc.jpeg",
   },
   {
     title: "Decor Items",
