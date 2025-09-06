@@ -136,7 +136,7 @@ const services = [
         details:
           "Handcrafted woodwork that adds warmth and character to your spaces. From built-ins to custom furniture.",
         icon: "/flaticons/carpentry.png",
-        backgroundImage: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        backgroundImage: "/carpentryc.jpeg"
       },
       {
         id: "electrical",
@@ -180,7 +180,7 @@ const services = [
         details:
           "Elegant ceiling designs and decorative plasterwork that add sophistication to your interiors.",
         icon: "/flaticons/plastering.png",
-        backgroundImage: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        backgroundImage: "/popc.jpeg"
       },
       {
         id: "painting",

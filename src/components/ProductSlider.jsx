@@ -47,7 +47,7 @@ const products = [
   {
     title: "Custom Designs",
     image:
-      "https://i.etsystatic.com/42182703/r/il/737786/5636910213/il_fullxfull.5636910213_8pjm.jpg",
+      "https://www.meganleedesigns.com/cdn/shop/files/Custom-Design.jpg?v=1704938534",
   },
 ];
 
