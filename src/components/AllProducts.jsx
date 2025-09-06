@@ -6,37 +6,37 @@ const projects = [
   {
     title: "Sofa",
     tag: "Learn More",
-    image: "https://images.unsplash.com/photo-1749741335932-f5295ee9afd0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8",
+    image: "/sofachange.jpeg",
     id:"sofa"
   },
   {
     title: "Chairs",
-tag: "Learn More",    image: "https://plus.unsplash.com/premium_photo-1674815329488-c4fc6bf4ced8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW50ZXJpb3J8ZW58MHx8MHx8fDA%3D",
+tag: "Learn More",    image: "/chairchange.jpeg",
      id:"chairs"
   },
   {
     title: "Dining Tables",
-tag: "Learn More",    image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW50ZXJpb3J8ZW58MHx8MHx8fDA%3D",
+tag: "Learn More",    image: "/diningc.jpeg",
      id:"diningtables"
   },
   {
     title: "Console Tables",
-tag: "Learn More",    image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aW50ZXJpb3J8ZW58MHx8MHx8fDA%3D",
+tag: "Learn More",    image: "/consolec.jpeg",
      id:"consoletables"
   },
   {
     title: "Wardrobes",
-tag: "Learn More",    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGludGVyaW9yfGVufDB8fDB8fHww",
+tag: "Learn More",    image: "/wardrobec.jpeg",
      id:"wardrobes"
   },
   {
     title: "TV Units",
-tag: "Learn More",    image: "https://plus.unsplash.com/premium_photo-1670360414946-e33a828d1d52?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGludGVyaW9yfGVufDB8fDB8fHww",
+tag: "Learn More",    image: "/tvc.jpeg",
      id:"tvunits"
   },
   {
     title: "Lights",
-tag: "Learn More",    image: "https://plus.unsplash.com/premium_photo-1686090449194-04ac2af9f758?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGludGVyaW9yfGVufDB8fDB8fHww",
+tag: "Learn More",    image: "/lightc.jpeg",
      id:"lights"
   },
   {

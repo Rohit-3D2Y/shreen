@@ -410,7 +410,7 @@ const Services = () => {
   return (
     <section className="relative bg-[#eae5df]">
       {/* Header */}
-      <div className="py-16 px-8 lg:px-16 max-w-7xl mx-auto">
+      <div className="py-10 px-8 lg:px-16 max-w-7xl mx-auto">
         <AnimatedText variant="fadeIn" className="text-center">
           <motion.h2
             className="text-5xl lg:text-7xl font-bold text-[#a85f31] mb-6 brico -tracking-wider"

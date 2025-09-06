@@ -380,7 +380,7 @@ function Service2() {
                         rippleColor="rgba(255, 255, 255, 0.4)"
                       >
                         <motion.a
-                          href={`https://wa.me/919876543210?text=Hi, I would like to know more about your "${encodeURIComponent(
+                          href={`https://wa.me/918082466624?text=Hi, I would like to know more about your "${encodeURIComponent(
                             service.title
                           )}" service.`}
                           target="_blank"
