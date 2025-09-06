@@ -13,6 +13,7 @@ import ProductDetail from "./components/ProductDetail";
 import ScrollToTop from "./components/ScrollToTop";
 import WhatsAppContactForm from "./components/WhatsappContactForm";
 import Gallery from "./components/Gallery";
+import ProjectGallery from "./components/ProjectGallery";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import Service2 from "./components/ServiceBackup";
 
@@ -47,6 +48,8 @@ const App = () => {
           <Route path="/product" element={<AllProducts />} />
           <Route path="/features" element={<Features />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/gallery/:slug" element={<ProjectGallery />} />
+          <Route path="/gallery/:slug/:photo" element={<ProjectGallery />} />
           <Route path="/:id" element={<ProductDetail />} />
           <Route path="/contact" element={<WhatsAppContactForm />} />
         </Routes>
