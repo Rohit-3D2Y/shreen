@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
 import { getProjectBySlug, projects } from "../utils/projects";
 
 const ProjectGallery = () => {
@@ -12,8 +10,24 @@ const ProjectGallery = () => {
   useEffect(() => {
     if (!project) return;
     document.body.style.overflow = "unset"; // page route, no modal lock
-    // If no photo segment, redirect to first photo
-    if (!photo) navigate(`/gallery/${slug}/1`, { replace: true });
+    // If no photo segment, redirect to first photo for deep-link consistency
+    if (!photo) {
+      navigate(`/gallery/${slug}/1`, { replace: true });
+      return;
+    }
+
+    // When a specific photo is in the URL, scroll to that stacked image
+    const idx = Math.max(
+      1,
+      Math.min(Number(photo || 1), project.images.length)
+    );
+    const el = document.getElementById(`photo-${idx}`);
+    if (el) {
+      // slight timeout helps after route transitions
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 0);
+    }
   }, [slug, photo]);
 
   if (!project) {
@@ -31,17 +45,6 @@ const ProjectGallery = () => {
     );
   }
 
-  const indexFromParam = Math.max(
-    1,
-    Math.min(Number(photo || 1), project.images.length)
-  );
-  const activeIndex = indexFromParam - 1;
-  const img = project.images[activeIndex];
-  const prevIndex =
-    activeIndex === 0 ? project.images.length - 1 : activeIndex - 1;
-  const nextIndex =
-    activeIndex === project.images.length - 1 ? 0 : activeIndex + 1;
-
   // Find neighbors for next/prev projects
   const idx = projects.findIndex((p) => p.slug === project.slug);
   const prevProject = projects[(idx - 1 + projects.length) % projects.length];
@@ -49,7 +52,7 @@ const ProjectGallery = () => {
 
   return (
     <div className="min-h-screen bg-[#f5f2ef]">
-      <header className="pt-20 pb-6 px-6 max-w-6xl mx-auto">
+      <header className="pt-24 pb-6 px-6 max-w-6xl mx-auto sticky top-5 bg-[#f5f2ef] z-10">
         <div className="flex items-end justify-between gap-3 flex-wrap">
           <div>
             <p className="text-xs text-gray-600 uppercase tracking-wide">
@@ -72,48 +75,27 @@ const ProjectGallery = () => {
       </header>
 
       <main className="px-6 max-w-6xl mx-auto pb-16">
-        {/* Main viewer */}
-        <div className="relative aspect-[16/9] bg-black/5 rounded-xl overflow-hidden">
-          <img
-            src={img}
-            alt={`${project.title} - ${activeIndex + 1}`}
-            className="absolute inset-0 w-full h-full object-cover md:object-cover"
-          />
-
-          <div className="hidden md:flex absolute inset-y-0 left-0 right-0 items-center justify-between px-4">
-            <Link
-              to={`/gallery/${project.slug}/${prevIndex + 1}`}
-              className="bg-white/90 hover:bg-white text-black p-2 rounded-full shadow"
-            >
-              <ChevronLeft size={22} />
-            </Link>
-            <Link
-              to={`/gallery/${project.slug}/${nextIndex + 1}`}
-              className="bg-white/90 hover:bg-white text-black p-2 rounded-full shadow"
-            >
-              <ChevronRight size={22} />
-            </Link>
-          </div>
-        </div>
-
-        {/* Thumbnails */}
-        <div className="mt-4 flex gap-2 overflow-x-auto overflow-y-hidden no-scrollbar pb-1 -mb-1">
+        {/* Stacked photos */}
+        <div className="space-y-4">
           {project.images.map((src, i) => (
-            <Link
+            <section
+              id={`photo-${i + 1}`}
               key={i}
-              to={`/gallery/${project.slug}/${i + 1}`}
-              className={`relative w-24 h-20 flex-shrink-0 rounded overflow-hidden border ${
-                i === activeIndex
-                  ? "border-[#a85f31] ring-2 ring-[#a85f31]/40"
-                  : "border-gray-200 hover:border-[#a85f31]/40"
-              }`}
+              className="bg-white rounded-xl overflow-hidden shadow border border-gray-100"
             >
               <img
                 src={src}
-                alt={`${project.title} ${i + 1}`}
-                className="w-full h-full object-cover"
+                alt={`${project.title} - ${i + 1}`}
+                loading="lazy"
+                className="w-full h-auto object-cover"
               />
-            </Link>
+              <div className="flex items-center justify-between px-4 py-2 text-xs text-gray-500">
+                <span>
+                  {project.title} — Photo {i + 1} / {project.images.length}
+                </span>
+                
+              </div>
+            </section>
           ))}
         </div>
 
