@@ -80,7 +80,7 @@ const HeroStats = () => {
           <div className="-tracking-wider brico text-6xl text-left">
             <h2>
               Designing Spaces, <br />
-              Defining Styles
+              Defining Lifestyles
             </h2>
           </div>
         </div>
@@ -154,7 +154,7 @@ const HeroStats = () => {
                 </div>
               </div>
               <AnimatedImage
-                src="https://www.brabbu.com/en/inspiration-and-ideas/wp-content/uploads/2021/03/Surprising-Mumbai-Interior-Design-Projects-VRATIKA.jpg"
+                src="/stats (1).jpeg"
                 alt="Real estate professionals working with documents and house models"
                 className="w-full h-64 sm:h-72 object-cover rounded-2xl shadow-lg"
               />
@@ -210,7 +210,7 @@ const HeroStats = () => {
                 </div>
               </div>
               <AnimatedImage
-                src="https://images.adsttc.com/media/images/634e/5c9b/eb99/d038/7eb2/b3a7/newsletter/interior-focus-curves_8.jpg?1666079905"
+                src="/stats (2).jpeg"
                 alt="Happy family signing documents with real estate agent"
                 className="w-full h-64 sm:h-72 object-cover rounded-2xl shadow-lg"
               />
