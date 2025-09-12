@@ -14,7 +14,7 @@ const Landing = () => {
   
 
   // Your WhatsApp number here in international format (e.g., 91 for India)
-  const whatsappURL = `https://wa.me/918082466624?text=Hi,%20I%20want%20to%20know%20more%20about%20your%20work`;
+  const whatsappURL = `https://wa.me/918082466624?text=Hi,%20I%20want%20to%20know%20more%20about%20your%20Interior%20Design%20work`;
 
   return (
     <>
@@ -85,7 +85,7 @@ const Landing = () => {
       </div>
   <div className="fixed bottom-16 md:bottom-5 right-10  md:right-5 z-50">
       <a
-        href="https://wa.me/918082466624?text=Hi!%20I'd%20like%20to%20know%20more%20about%20your%20travel%20services."
+        href="https://wa.me/918082466624?text=Hi!%20I'd%20like%20to%20know%20more%20about%20your%20Interior%20design%20services."
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center gap-2 px-4 py-3 bg-amber-800 text-white font-medium rounded-full shadow-lg hover:scale-105 transition-transform"
