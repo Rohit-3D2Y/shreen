@@ -11,6 +11,7 @@ const Landing = () => {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 300], [0, 150]);
   const scale = useTransform(scrollY, [0, 300], [1, 1.1]);
+  
 
   // Your WhatsApp number here in international format (e.g., 91 for India)
   const whatsappURL = `https://wa.me/918082466624?text=Hi,%20I%20want%20to%20know%20more%20about%20your%20work`;
@@ -69,16 +70,17 @@ const Landing = () => {
           "/gal1 (3).jpeg",
          "/gal1 (4).jpeg",
         ].map((src, index) => (
-          <div
+          <a
             key={index}
             className="rounded-xl overflow-hidden group cursor-pointer"
+            href='/gallery'
           >
             <img
               src={src}
               alt={`Interior Product ${index + 1}`}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
-          </div>
+          </a>
         ))}
       </div>
   <div className="fixed bottom-16 md:bottom-5 right-10  md:right-5 z-50">
