@@ -22,7 +22,7 @@ const Footer = () => {
 
   return (
     <div className="bg-[#1E1E1E] text-[#7f5539] px-4 md:px-8 lg:px-16 pt-16 pb-8 brico -tracking-wider mt-16">
-      <footer className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+      <footer className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         {/* About Section */}
         <div>
           {/* <h3 className="text-2xl font-bold text-[#9c6644] mb-4">
@@ -76,7 +76,9 @@ const Footer = () => {
             Contact
           </h3>
           <p className="text-md">Shreen Designs</p>
-          <p className="text-md">Mumbai, India</p>
+          <p className="text-md">Shop - 4B Shree Ambe Society,</p>
+          <p className="text-md">Nirala Construction Rai Dongri,</p>
+          <p className="text-md">Borivali East, Mumbai 400066</p>
           <p className="text-md mt-2">
             Email:{" "}
             <span className="text-[#7f5539] font-semibold">
@@ -102,6 +104,23 @@ const Footer = () => {
             </a>
          
           </div>
+        </div>
+
+        {/* Map Section */}
+        <div className="w-full">
+          <h3 className="text-2xl font-semibold text-[#9c6644] mb-4">
+            Our Location
+          </h3>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3767.424805555556!2d72.86095997496998!3d19.226364981999856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDEzJzM1LjEiTiA3MsKwNTEnNDYuNyJF!5e0!3m2!1sen!2sin!4v1735380000000!5m2!1sen!2sin"
+            width="100%"
+            height="180"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="rounded-lg"
+          ></iframe>
         </div>
       </footer>
 
